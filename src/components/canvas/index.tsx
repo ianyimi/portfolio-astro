@@ -1,5 +1,8 @@
 import { Canvas, events } from '@react-three/fiber';
+import { Preload } from '@react-three/drei';
+import { Suspense } from 'react';
 import Cube from './Cube';
+import Spaceship from './Spaceship';
 
 export default function LCanvas({ defaultCanvasProps }) {
   const hero = document.getElementById('hero');
@@ -25,9 +28,13 @@ export default function LCanvas({ defaultCanvasProps }) {
       {/*<LControl/>*/}
       {/* <Preload all/> */}
 
-      <pointLight intensity={1.0} position={[5, 3, 5]}></pointLight>
-      <Cube position-x={2} />
-      <Cube position-x={-2} />
+      <pointLight intensity={1.0} position={[5, 3, 5]} />
+      <Cube position-x={4} />
+      <Cube position-x={-4} />
+      <Suspense fallback={null}>
+        <Preload all />
+        <Spaceship />
+      </Suspense>
     </Canvas>
   );
 }
