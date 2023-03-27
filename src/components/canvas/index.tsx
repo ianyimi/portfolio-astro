@@ -29,7 +29,7 @@ export default function Scene({ defaultCanvasProps }) {
       <Cube position-x={4} />
       <Cube position-x={-4} />
       <Suspense fallback={null}>
-        <Spaceship />
+        <Spaceship position={[0, -1, 2]} />
       </Suspense>
     </Canvas>
   );
