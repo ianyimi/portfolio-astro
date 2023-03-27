@@ -5,6 +5,8 @@ export default function LCanvas({ defaultCanvasProps }) {
   const hero = document.getElementById('hero');
   return (
     <Canvas
+      id="canvas"
+      dpr={window.devicePixelRatio}
       {...defaultCanvasProps}
       style={{
         position: 'absolute',
@@ -13,7 +15,7 @@ export default function LCanvas({ defaultCanvasProps }) {
         zIndex: 1,
         overflow: 'hidden',
       }}
-      // eventSource={hero}
+      eventSource={hero}
       // @ts-ignore
       onCreated={({ gl, state }) => {
         if (state) state.events.connect(hero);
@@ -24,7 +26,8 @@ export default function LCanvas({ defaultCanvasProps }) {
       {/* <Preload all/> */}
 
       <pointLight intensity={1.0} position={[5, 3, 5]}></pointLight>
-      <Cube />
+      <Cube position-x={2} />
+      <Cube position-x={-2} />
     </Canvas>
   );
 }

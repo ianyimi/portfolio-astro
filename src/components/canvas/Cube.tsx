@@ -1,7 +1,7 @@
-import { useFrame } from '@react-three/fiber';
+import { GroupProps, useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 
-const Cube = () => {
+const Cube = (props?: GroupProps) => {
   const cube = useRef<THREE.Mesh>(null);
   const [hover, setHover] = useState(false);
 
@@ -12,10 +12,12 @@ const Cube = () => {
   });
 
   return (
-    <mesh ref={cube} onPointerOver={() => setHover(true)} onPointerOut={() => setHover(false)}>
-      <boxBufferGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hover ? 'yellow' : '#0391BA'} />
-    </mesh>
+    <group {...props}>
+      <mesh ref={cube} onPointerOver={() => setHover(true)} onPointerOut={() => setHover(false)}>
+        <boxBufferGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color={hover ? 'yellow' : '#0391BA'} />
+      </mesh>
+    </group>
   );
 };
 

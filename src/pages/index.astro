@@ -27,17 +27,17 @@ const defaultCanvasProps = {
     // position: position,
     // quaternion: quaternion,
   },
-  // resize: {polyfill: ResizeObserver},
+  resize: { polyfill: ResizeObserver },
   // dpr: window.devicePixelRatio,
-  // events: events,
+  // events: undefined,
 };
 ---
 
 <Layout {meta}>
-  <div id="hero" class="hero min-h-screen">
-    <div class="hero-content text-center">
+  <div id="hero" class="hero min-h-screen overflow-hidden">
+    <div class="hero-content text-center z-[5]">
       <div class="max-w-md">
-        <h1 class="text-5xl font-bold">Hello there</h1>
+        <h1 class="text-5xl font-bold">Isaiah Anyimi</h1>
         <p class="py-6">
           Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti
           eaque aut repudiandae et a id nisi.
@@ -45,8 +45,8 @@ const defaultCanvasProps = {
         <button class="btn btn-primary">Get Started</button>
       </div>
     </div>
-  </div>
-  <div id="canvas">
+    <!-- <div id="canvas" class="absolute overflow-hidden top-0 left-0 min-w-full min-h-full bg-red-300"> -->
     <Canvas defaultCanvasProps={defaultCanvasProps} client:only="react" />
+    <!-- </div> -->
   </div>
 </Layout>
