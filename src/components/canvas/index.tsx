@@ -1,11 +1,10 @@
-import { Canvas, events } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { Preload } from '@react-three/drei';
 import { Suspense } from 'react';
 import Cube from './Cube';
 import Spaceship from './Spaceship';
 
-export default function LCanvas({ defaultCanvasProps }) {
-  const hero = document.getElementById('hero');
+export default function Scene({ defaultCanvasProps }) {
   return (
     <Canvas
       id="canvas"
@@ -18,21 +17,18 @@ export default function LCanvas({ defaultCanvasProps }) {
         zIndex: 1,
         overflow: 'hidden',
       }}
-      eventSource={hero}
       // @ts-ignore
-      onCreated={({ gl, state }) => {
-        if (state) state.events.connect(hero);
-        // gl.setClearColor('#252934');
-      }}
+      // onCreated={({ gl }) => {
+      //   gl.setClearColor('#252934');
+      // }}
     >
       {/*<LControl/>*/}
-      {/* <Preload all/> */}
+      <Preload all />
 
       <pointLight intensity={1.0} position={[5, 3, 5]} />
       <Cube position-x={4} />
       <Cube position-x={-4} />
       <Suspense fallback={null}>
-        <Preload all />
         <Spaceship />
       </Suspense>
     </Canvas>

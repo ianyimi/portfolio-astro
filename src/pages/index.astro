@@ -34,7 +34,7 @@ const defaultCanvasProps = {
 ---
 
 <Layout {meta}>
-  <div id="hero" class="hero min-h-screen overflow-hidden bg-[#3f3f3f] text-white">
+  <div class="hero min-h-screen overflow-hidden">
     <div class="hero-content text-center z-[5]">
       <div class="max-w-md">
         <h1 class="text-5xl font-bold">Isaiah Anyimi</h1>
@@ -45,8 +45,5 @@ const defaultCanvasProps = {
         <button class="btn btn-primary">Get Started</button>
       </div>
     </div>
-    <!-- <div id="canvas" class="absolute overflow-hidden top-0 left-0 min-w-full min-h-full bg-red-300"> -->
-    <Canvas defaultCanvasProps={defaultCanvasProps} client:only="react" />
-    <!-- </div> -->
   </div>
 </Layout>

@@ -4,7 +4,8 @@ import '~/assets/styles/base.css';
 import MetaTags from '~/components/common/MetaTags.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
-import { MetaSEO } from '~/types';
+import Canvas from '~/components/canvas';
+import type { MetaSEO } from '~/types';
 import { SITE } from '~/config.mjs';
 
 export interface Props {
@@ -13,6 +14,28 @@ export interface Props {
 
 const { meta = {} } = Astro.props;
 const { language = 'en', textDirection = 'ltr' } = SITE;
+
+const defaultCanvasProps = {
+  gl: {
+    powerPreference: 'high-performance',
+    antialias: true,
+    depth: true,
+    // alpha: false,
+    stencil: false,
+  },
+  camera: {
+    near: 0.01,
+    far: 2000,
+    fov: 75,
+    // zoom: isMobile ? 0.75 : 1
+    // makeDefault: true,
+    // position: position,
+    // quaternion: quaternion,
+  },
+  resize: { polyfill: ResizeObserver },
+  // dpr: window.devicePixelRatio,
+  // events: undefined,
+};
 ---
 
 <!DOCTYPE html>
@@ -21,13 +44,16 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
     <MetaTags {...meta} />
   </head>
 
-  <body class="antialiased text-page bg-light dark:text-slate-300 tracking-tight dark:bg-dark">
-    <slot />
+  <div class="antialiased text-page bg-light dark:text-slate-300 tracking-tight dark:bg-dark">
+    <div id="main">
+      <slot />
+      <Canvas defaultCanvasProps={defaultCanvasProps} client:only="react" />
+    </div>
     <BasicScripts />
     <style is:global>
       img {
         content-visibility: auto;
       }
     </style>
-  </body>
+  </div>
 </html>
