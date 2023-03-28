@@ -1,35 +1,11 @@
 ---
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
-import Canvas from '~/components/canvas';
-import { events } from '@react-three/fiber';
 
 const meta = {
   title: SITE.title,
   description: SITE.description,
   dontUseTitleTemplate: true,
-};
-
-const defaultCanvasProps = {
-  gl: {
-    powerPreference: 'high-performance',
-    antialias: true,
-    depth: true,
-    // alpha: false,
-    stencil: false,
-  },
-  camera: {
-    near: 0.01,
-    far: 2000,
-    fov: 75,
-    // zoom: isMobile ? 0.75 : 1
-    // makeDefault: true,
-    // position: position,
-    // quaternion: quaternion,
-  },
-  resize: { polyfill: ResizeObserver },
-  // dpr: window.devicePixelRatio,
-  // events: undefined,
 };
 ---
 
