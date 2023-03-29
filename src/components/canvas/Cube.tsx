@@ -14,7 +14,7 @@ const Cube = (props?: GroupProps) => {
   return (
     <group {...props}>
       <mesh ref={cube} onPointerOver={() => setHover(true)} onPointerOut={() => setHover(false)}>
-        <boxBufferGeometry args={[1, 1, 1]} />
+        <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color={hover ? 'yellow' : '#0391BA'} />
       </mesh>
     </group>

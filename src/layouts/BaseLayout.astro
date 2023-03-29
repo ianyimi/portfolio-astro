@@ -7,6 +7,7 @@ import BasicScripts from '~/components/common/BasicScripts.astro';
 import Canvas from '~/components/canvas';
 import type { MetaSEO } from '~/types';
 import { SITE } from '~/config.mjs';
+import Scroll from '~/components/dom/Scroll';
 
 export interface Props {
   meta?: MetaSEO;
@@ -52,13 +53,17 @@ const defaultCanvasProps = {
       // The value is checked and applyed before rendering anything.
     </script>
     <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script> -->
   </head>
 
   <div class="antialiased text-page bg-light dark:text-slate-300 tracking-tight dark:bg-dark">
     <div id="main">
-      <Canvas defaultCanvasProps={defaultCanvasProps} client:only="react" />
-      <slot />
+      <Scroll client:load>
+        <slot />
+      </Scroll>
+      <div class="-z-[1] fixed min-w-[100%] min-h-[100%]">
+        <Canvas defaultCanvasProps={defaultCanvasProps} client:only="react" />
+      </div>
     </div>
     <BasicScripts />
     <style is:global>
