@@ -32,7 +32,7 @@ export default function Scene({ defaultCanvasProps }) {
     >
       {/*<LControl/>*/}
       <Preload all />
-      <ScrollTicker />
+      {/* <ScrollTicker /> */}
       <pointLight intensity={1.0} position={[5, 3, 5]} />
       <Cube position-x={4} />
       <Cube position-x={-4} />
