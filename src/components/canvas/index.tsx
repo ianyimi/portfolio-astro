@@ -10,6 +10,7 @@ import { ScrollTicker } from '../dom/Scroll';
 import { useScroll } from '@react-three/drei';
 
 export default function Scene({ defaultCanvasProps }) {
+  const domContent = document.getElementById('domContent');
   const content = document.getElementById('content');
   useScroll();
   return (
@@ -24,7 +25,7 @@ export default function Scene({ defaultCanvasProps }) {
         zIndex: 1,
         overflow: 'hidden',
       }}
-      eventSource={content}
+      eventSource={content ?? domContent}
       // @ts-ignore
       // onCreated={({ gl }) => {
       //   gl.setClearColor('#252934');
