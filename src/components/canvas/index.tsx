@@ -7,12 +7,9 @@ import Camera from './Camera';
 import AmbientParticles from './AmbientParticles';
 import EnvironmentHandler from './EnvironmentHandler';
 import { ScrollTicker } from '../dom/Scroll';
-import { useScroll } from '@react-three/drei';
 
-export default function Scene({ defaultCanvasProps }) {
-  const domContent = document.getElementById('domContent');
-  const content = document.getElementById('content');
-  useScroll();
+export default function Scene({ defaultCanvasProps, scrollState }) {
+  const main = document.getElementById('content');
   return (
     <Canvas
       id="canvas"
@@ -25,7 +22,8 @@ export default function Scene({ defaultCanvasProps }) {
         zIndex: 1,
         overflow: 'hidden',
       }}
-      eventSource={content ?? domContent}
+      eventSource={main}
+      flat
       // @ts-ignore
       // onCreated={({ gl }) => {
       //   gl.setClearColor('#252934');
@@ -35,11 +33,11 @@ export default function Scene({ defaultCanvasProps }) {
       <Preload all />
       {/* <ScrollTicker /> */}
       <pointLight intensity={1.0} position={[5, 3, 5]} />
-      <Cube position-x={4} />
-      <Cube position-x={-4} />
+      <Cube position-x={4} newCamPos={[-2, -1, 3]} />
+      <Cube position-x={-4} newCamPos={[2, 1, 3]} />
       <Suspense fallback={null}>
         <Spaceship position={[0, -1, 2]} />
-        {/* <Camera /> */}
+        <Camera />
         <EnvironmentHandler />
       </Suspense>
     </Canvas>
