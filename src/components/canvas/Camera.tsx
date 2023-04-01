@@ -3,7 +3,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { damp } from 'three/src/math/MathUtils';
 import { ScrollTicker, ScrollState } from '../dom/Scroll';
-// import { useScroll } from '../../utils/lenis';
 
 const DELTA = 0.003;
 const SMOOTH = 999999;
@@ -11,7 +10,6 @@ const SMOOTH = 999999;
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Camera() {
-  // const { progress } = useScroll();
   const { camera } = useThree();
 
   ScrollTrigger.create({
@@ -27,7 +25,7 @@ export default function Camera() {
   });
 
   useFrame(({ viewport, camera }) => {
-    // console.log(progress);
+    // console.log();
     // camera.position['y'] = damp(camera.position['y'], progress * viewport.height, SMOOTH, DELTA);
   });
 

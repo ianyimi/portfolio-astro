@@ -1,6 +1,6 @@
 import Lenis from '@studio-freight/lenis';
 
-const wrapper = document.getElementById('wrapper');
+const wrapper = document.getElementById('domContent');
 const content = document.getElementById('content');
 
 const ScrollState = {
@@ -8,7 +8,7 @@ const ScrollState = {
   progress: 0,
 };
 
-// initScroll();
+initScroll();
 function initScroll() {
   if (!window || !wrapper || !content) return;
   const lenis = new Lenis({
@@ -31,6 +31,6 @@ function initScroll() {
   });
 }
 
-// export const useScroll = () => {
-//   return { top: ScrollState.top, progress: ScrollState.progress };
-// };
+export const useScroll = () => {
+  return { top: ScrollState.top, progress: ScrollState.progress };
+};
