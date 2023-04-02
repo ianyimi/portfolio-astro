@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { Preload } from '@react-three/drei';
+import { Preload, AdaptiveDpr, Bvh, PerformanceMonitor } from '@react-three/drei';
 import { Suspense } from 'react';
 import Cube from './Cube';
 import Spaceship from './Spaceship';
@@ -8,7 +8,7 @@ import AmbientParticles from './AmbientParticles';
 import EnvironmentHandler from './EnvironmentHandler';
 import { ScrollTicker } from '../dom/Scroll';
 
-export default function Scene({ defaultCanvasProps, scrollState }) {
+export default function Scene({ defaultCanvasProps }) {
   const content = document.getElementById('content');
   const contentY = content?.getBoundingClientRect().top;
   return (
@@ -31,17 +31,21 @@ export default function Scene({ defaultCanvasProps, scrollState }) {
       //   gl.setClearColor('#252934');
       // }}
     >
-      {/*<LControl/>*/}
-      <Preload all />
-      {/* <ScrollTicker /> */}
-      <pointLight intensity={1.0} position={[5, 3, 5]} />
-      <Cube position-x={4} newCamPos={[-2, -1, 3]} />
-      <Cube position-x={-4} newCamPos={[2, 1, 3]} />
-      <Suspense fallback={null}>
-        <Spaceship position={[0, -1, 2]} />
-        <Camera />
-        <EnvironmentHandler />
-      </Suspense>
+      <Bvh>
+        {/*<LControl/>*/}
+        <AdaptiveDpr />
+        <Preload all />
+        {/* <ScrollTicker /> */}
+        <pointLight intensity={1.0} position={[5, 3, 5]} />
+        <Cube position-x={4} newCamPos={[-2, -1, 3]} />
+        <Cube position-x={-4} newCamPos={[2, 1, 3]} />
+        <Suspense fallback={null}>
+          <Spaceship position={[0, -1, 2]} />
+          <Camera />
+          <EnvironmentHandler />
+        </Suspense>
+        <PerformanceMonitor />
+      </Bvh>
     </Canvas>
   );
 }
