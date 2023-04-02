@@ -1,4 +1,14 @@
 import Lenis from '@studio-freight/lenis';
+import { map } from 'nanostores';
+interface ScrollStore {
+  top: number;
+  progress: number;
+}
+
+export const scrollState = map<ScrollStore>({
+  top: 0,
+  progress: 0,
+});
 
 const wrapper = document.getElementById('domContent');
 const content = document.getElementById('content');
@@ -27,10 +37,8 @@ function initScroll() {
   lenis.on('scroll', ({ scroll, progress }: { scroll: number; progress: number }) => {
     ScrollState.top = scroll;
     ScrollState.progress = progress;
-    console.log(progress);
+    // Is this performant??
+    scrollState.setKey('top', scroll);
+    scrollState.setKey('progress', progress);
   });
 }
-
-export const useScroll = () => {
-  return { top: ScrollState.top, progress: ScrollState.progress };
-};
