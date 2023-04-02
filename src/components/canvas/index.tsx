@@ -9,7 +9,8 @@ import EnvironmentHandler from './EnvironmentHandler';
 import { ScrollTicker } from '../dom/Scroll';
 
 export default function Scene({ defaultCanvasProps, scrollState }) {
-  const main = document.getElementById('content');
+  const content = document.getElementById('content');
+  const contentY = content?.getBoundingClientRect().top;
   return (
     <Canvas
       id="canvas"
@@ -22,7 +23,8 @@ export default function Scene({ defaultCanvasProps, scrollState }) {
         zIndex: 1,
         overflow: 'hidden',
       }}
-      eventSource={main}
+      eventSource={content}
+      eventPrefix="client"
       flat
       // @ts-ignore
       // onCreated={({ gl }) => {
