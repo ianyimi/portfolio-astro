@@ -6,7 +6,7 @@ const DEFAULT_ANIMATION_CONFIG = {
   ease: 'power3.inOut',
 };
 
-const Cube = (props: { newCamPos: [number, number, number]; restProps?: GroupProps }) => {
+const Cube = (props: { newCamPos: [number, number, number] } & GroupProps) => {
   const { newCamPos, ...restProps } = props;
   const cube = useRef<THREE.Mesh>(null);
   const [hover, setHover] = useState(false);
@@ -27,7 +27,7 @@ const Cube = (props: { newCamPos: [number, number, number]; restProps?: GroupPro
     <group onClick={transitionCamera} {...restProps}>
       <mesh ref={cube} onPointerOver={() => setHover(true)} onPointerOut={() => setHover(false)}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={hover ? 'yellow' : '#0391BA'} />
+        <meshStandardMaterial color={hover ? 'yellow' : '#570DF8'} />
       </mesh>
     </group>
   );

@@ -5,9 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--aw-color-primary)',
-        secondary: 'var(--aw-color-secondary)',
-        accent: 'var(--aw-color-accent)',
+        // primary: 'var(--aw-color-primary)',
+        // secondary: 'var(--aw-color-secondary)',
+        // accent: 'var(--aw-color-accent)',
       },
       fontFamily: {
         sans: ['var(--aw-font-sans)', ...defaultTheme.fontFamily.sans],
@@ -36,5 +36,5 @@ module.exports = {
     ],
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
-  darkMode: ['class', '[data-theme="dark"]'],
+  // darkMode: ['class', '[data-theme="dark"]'],
 };

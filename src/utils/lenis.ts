@@ -1,4 +1,5 @@
 import Lenis from '@studio-freight/lenis';
+
 import { scrollState } from '~/store/scroll';
 
 const wrapper = document.getElementById('domContent');
