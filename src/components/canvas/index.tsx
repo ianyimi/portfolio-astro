@@ -3,7 +3,7 @@ import { Preload, AdaptiveDpr, Bvh, PerformanceMonitor } from '@react-three/drei
 import { Suspense } from 'react';
 import Cube from './Cube';
 import Spaceship from './Spaceship';
-import Camera from './Camera';
+import CameraScroll from './CameraScroll';
 import AmbientParticles from './AmbientParticles';
 import EnvironmentHandler from './EnvironmentHandler';
 import { ScrollTicker } from '../dom/Scroll';
@@ -41,7 +41,7 @@ export default function Scene({ defaultCanvasProps }) {
         <Cube position-x={-4} newCamPos={[2, 1, 3]} />
         <Suspense fallback={null}>
           <Spaceship position={[0, -1, 2]} />
-          <Camera />
+          <CameraScroll />
           <EnvironmentHandler />
         </Suspense>
         <PerformanceMonitor />
