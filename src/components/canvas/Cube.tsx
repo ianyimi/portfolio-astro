@@ -1,6 +1,5 @@
 import { GroupProps, useFrame, useThree } from '@react-three/fiber';
 import { useRef, useState } from 'react';
-import gsap from 'gsap';
 
 const DEFAULT_ANIMATION_CONFIG = {
   duration: 2,

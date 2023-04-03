@@ -16,6 +16,25 @@ module.exports = {
       },
     },
   },
+  daisyui: {
+    themes: [
+      {
+        redAndGrey: {
+          primary: '#2B2D42',
+          secondary: '#8D99AE',
+          accent: '#EF233C',
+          neutral: '#EDF2F4',
+          'base-100': '#FFFFFF',
+          info: '#3ABFF8',
+          success: '#36D399',
+          warning: '#FBBD23',
+          error: '#D90429',
+        },
+      },
+      'dark',
+      'cupcake',
+    ],
+  },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
   darkMode: ['class', '[data-theme="dark"]'],
 };

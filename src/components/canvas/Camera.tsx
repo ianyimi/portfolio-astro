@@ -1,30 +1,30 @@
 import { useFrame, useThree } from '@react-three/fiber';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { damp } from 'three/src/math/MathUtils';
 import { ScrollTicker, ScrollState } from '../dom/Scroll';
 import { useStore } from '@nanostores/react';
-import { scrollState } from '~/utils/lenis';
+import { scrollState } from '~/store/scroll';
+// import { canvasTimelineState } from '~/store/canvasTimeline';
 
 const DELTA = 0.003;
 const SMOOTH = 999999;
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 export default function Camera() {
   const { progress } = useStore(scrollState);
+  // const { canvasTimeline } = useStore(canvasTimelineState);
 
-  ScrollTrigger.create({
-    // trigger: '.content',
-    scroller: '#content',
-    start: 'top top',
-    // endTrigger: '#otherID',
-    end: 'bottom 50%+=100px',
-    // onToggle: (self) => console.log('toggled, isActive:', self.isActive),
-    onUpdate: (self) => {
-      console.log('progress:', self.progress.toFixed(3), 'direction:', self.direction, 'velocity', self.getVelocity());
-    },
-  });
+  // ScrollTrigger.create({
+  //   // trigger: '.content',
+  //   scroller: '#content',
+  //   start: 'top top',
+  //   // endTrigger: '#otherID',
+  //   end: 'bottom 50%+=100px',
+  //   // onToggle: (self) => console.log('toggled, isActive:', self.isActive),
+
+  // });
+  // canvasTimeline.to('#main', 1, { backgroundColor: '#FF0000', ease: 'none' });
+  // canvasTimeline.to('#main', 1, { backgroundColor: '#0000FF', ease: 'none' });
 
   // Lenis ScrollTicker Logic
   useFrame(({ viewport, camera }) => {

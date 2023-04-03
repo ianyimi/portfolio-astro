@@ -1,14 +1,5 @@
 import Lenis from '@studio-freight/lenis';
-import { map } from 'nanostores';
-interface ScrollStore {
-  top: number;
-  progress: number;
-}
-
-export const scrollState = map<ScrollStore>({
-  top: 0,
-  progress: 0,
-});
+import { scrollState } from '~/store/scroll';
 
 const wrapper = document.getElementById('domContent');
 const content = document.getElementById('content');

@@ -28,7 +28,7 @@ export default function Scene({ defaultCanvasProps }) {
       flat
       // @ts-ignore
       // onCreated={({ gl }) => {
-      //   gl.setClearColor('#252934');
+      //   gl.setClearColor('#FFF000');
       // }}
     >
       <Bvh>
