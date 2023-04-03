@@ -5,11 +5,6 @@ import { scrollState } from '~/store/scroll';
 const wrapper = document.getElementById('domContent');
 const content = document.getElementById('content');
 
-const ScrollState = {
-  top: 0,
-  progress: 0,
-};
-
 initScroll();
 function initScroll() {
   if (!window || !wrapper || !content) return;
@@ -26,11 +21,21 @@ function initScroll() {
     infinite: false,
   });
 
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.create({
+    // scoller: scroller,
+    trigger: '#name',
+    start: 'top top',
+    end: 'bottom top',
+    onEnter: () => console.log('enter'),
+    onLeave: () => console.log('leave'),
+    markers: true,
+  });
+
   lenis.on('scroll', ({ scroll, progress }: { scroll: number; progress: number }) => {
-    ScrollState.top = scroll;
-    ScrollState.progress = progress;
     // Is this performant??
     scrollState.setKey('top', scroll);
     scrollState.setKey('progress', progress);
+    ScrollTrigger.update();
   });
 }

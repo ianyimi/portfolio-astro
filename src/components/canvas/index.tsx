@@ -4,9 +4,7 @@ import { Suspense } from 'react';
 import Cube from './Cube';
 import Spaceship from './Spaceship';
 import CameraScroll from './CameraScroll';
-import AmbientParticles from './AmbientParticles';
 import EnvironmentHandler from './EnvironmentHandler';
-import { ScrollTicker } from '../dom/Scroll';
 
 export default function Scene({ defaultCanvasProps }) {
   const content = document.getElementById('content');
@@ -26,16 +24,10 @@ export default function Scene({ defaultCanvasProps }) {
       eventSource={content}
       eventPrefix="client"
       flat
-      // @ts-ignore
-      // onCreated={({ gl }) => {
-      //   gl.setClearColor('#FFF000');
-      // }}
     >
       <Bvh>
-        {/*<LControl/>*/}
         <AdaptiveDpr />
         <Preload all />
-        {/* <ScrollTicker /> */}
         <pointLight intensity={1.0} position={[5, 3, 5]} />
         <Cube position-x={4} newCamPos={[-2, -1, 3]} />
         <Cube position-x={-4} newCamPos={[2, 1, 3]} />

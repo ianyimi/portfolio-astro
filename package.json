@@ -60,6 +60,7 @@
     "@react-three/drei": "^9.58.5",
     "@react-three/fiber": "^8.12.0",
     "@studio-freight/lenis": "^1.0.5",
+    "@types/gsap": "^3.0.0",
     "daisyui": "^2.51.5",
     "nanostores": "^0.7.4",
     "react": "^18.0.0",
