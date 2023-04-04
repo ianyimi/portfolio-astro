@@ -19,7 +19,8 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        redAndGrey: {
+        // https://coolors.co/2b2d42-8d99ae-edf2f4-ef233c-d90429
+        spaceCadetRed: {
           primary: '#2B2D42',
           secondary: '#8D99AE',
           accent: '#EF233C',
@@ -30,11 +31,21 @@ module.exports = {
           warning: '#FBBD23',
           error: '#D90429',
         },
+        // https://coolors.co/fffcf2-ccc5b9-403d39-252422-eb5e28
+        floralWhiteFlame: {
+          primary: '#FFFCF2',
+          secondary: '#2B2D42',
+          accent: '#EB5E28',
+          neutral: '#403D39',
+          'base-100': '#252422',
+          info: '#3ABFF8',
+          success: '#36D399',
+          warning: '#EB5E28',
+          error: '#D90429',
+        },
       },
-      'dark',
-      'cupcake',
     ],
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
-  darkMode: ['class', '[data-theme="dark"]'],
+  darkMode: ['class', '[data-theme="floralWhiteFlame"]'],
 };
