@@ -1,9 +1,10 @@
 import Color from 'color';
 import { map } from 'nanostores';
 
-import { COLOR_ROLE, floralWhiteFlameHSL, spaceCadetRedHSL } from '~/utils/themes';
+import { COLOR_ROLE, CUSTOM_THEME, floralWhiteFlameHSL, spaceCadetRedHSL } from '~/utils/themes';
 
 export interface ThemeStore {
+  activeTheme: CUSTOM_THEME;
   light: Record<string, string>;
   dark: Record<string, string>;
   spaceCadetRed?: {
@@ -41,6 +42,7 @@ export const floralWhiteFlameHexColors = {
 };
 
 export const CustomThemes = map<ThemeStore>({
+  activeTheme: 'light',
   light: spaceCadetRedHSL,
   dark: floralWhiteFlameHSL,
   // spaceCadetRed: {

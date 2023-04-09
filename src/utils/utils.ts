@@ -1,4 +1,5 @@
 import { DATE_FORMATTER } from '~/config.mjs';
+import { useEffect } from 'react';
 
 const formatter =
   DATE_FORMATTER ||
@@ -19,3 +20,10 @@ export const trim = (str = '', ch?: string) => {
   while (end > start && str[end - 1] === ch) --end;
   return start > 0 || end < str.length ? str.substring(start, end) : str;
 };
+
+export function useDarkMode(): boolean {
+  const body = document.body;
+  if (!body) return false;
+  if (body.classList.contains('dark')) return true;
+  return false;
+}

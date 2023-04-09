@@ -1,8 +1,9 @@
-export type COLOR_ROLE = keyof typeof COLOR_ROLES;
-export type BASE_COLORS = keyof typeof BASE_COLORS;
-export type FOCUS_COLORS = keyof typeof FOCUS_COLORS;
-export type STATE_COLORS = keyof typeof STATE_COLORS;
-export type CONTENT_COLORS = keyof typeof CONTENT_COLORS;
+export type CUSTOM_THEME = keyof typeof CUSTOM_THEME;
+export type COLOR_ROLE = keyof typeof COLOR_ROLE;
+export type BASE_COLOR = keyof typeof BASE_COLOR;
+export type FOCUS_COLOR = keyof typeof FOCUS_COLOR;
+export type STATE_COLOR = keyof typeof STATE_COLOR;
+export type CONTENT_COLOR = keyof typeof CONTENT_COLOR;
 
 export const spaceCadetRedHSL = {
   primary: '235 21% 21%',
@@ -78,7 +79,14 @@ export function hexToHSL(hex: string): string {
   return `hsl(${hPercentage}, ${sPercentage}%, ${lPercentage}%)`;
 }
 
-const COLOR_ROLES = {
+const CUSTOM_THEME = {
+  light: 'light',
+  dark: 'dark',
+  'space-cadet-red': 'space-cadet-red',
+  'floral-white-flame': 'floral-white-flame',
+} as const;
+
+const COLOR_ROLE = {
   primary: 'primary',
   'primary-focus': 'primary-focus',
   'primary-content': 'primary-content',
@@ -105,24 +113,24 @@ const COLOR_ROLES = {
   'error-content': 'error-content',
 } as const;
 
-const FOCUS_COLORS = {
+const FOCUS_COLOR = {
   'primary-focus': 'primary-focus',
   'secondary-focus': 'secondary-focus',
   'accent-focus': 'accent-focus',
   'neutral-focus': 'neutral-focus',
 } as const;
-const BASE_COLORS = {
+const BASE_COLOR = {
   'base-100': 'base-100',
   'base-200': 'base-200',
   'base-300': 'base-300',
 } as const;
-const STATE_COLORS = {
+const STATE_COLOR = {
   info: 'info',
   success: 'success',
   warning: 'warning',
   error: 'error',
 } as const;
-const CONTENT_COLORS = {
+const CONTENT_COLOR = {
   'primary-content': 'primary-content',
   'secondary-content': 'secondary-content',
   'accent-content': 'accent-content',

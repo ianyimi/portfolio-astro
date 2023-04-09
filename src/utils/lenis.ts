@@ -35,7 +35,7 @@ function initScroll() {
 
   lenis.on('scroll', ({ scroll, progress }: { scroll: number; progress: number }) => {
     // Is this performant??
-    // ScrollTrigger.update();
+    ScrollTrigger.update();
     ScrollState.setKey('top', scroll);
     ScrollState.setKey('progress', progress);
   });
