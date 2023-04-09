@@ -17,25 +17,25 @@
 
     /* Space Red Cadet */
     --space-cadet-red-primary: #2b2d42;
-    --space-cadet-red-pecondary: #8d99ae;
-    --space-cadet-red-pcccent: #ef233c;
-    --space-cadet-red-peutral: #edf2f4;
-    --space-cadet-red-pase100: #ffffff;
-    --space-cadet-red-pnfo: #3abff8;
-    --space-cadet-red-puccess: #36d399;
-    --space-cadet-red-parning: #fbbd23;
-    --space-cadet-red-prror: #d90429;
+    --space-cadet-red-secondary: #8d99ae;
+    --space-cadet-red-accent: #ef233c;
+    --space-cadet-red-neutral: #edf2f4;
+    --space-cadet-red-base100: #ffffff;
+    --space-cadet-red-info: #3abff8;
+    --space-cadet-red-success: #36d399;
+    --space-cadet-red-warning: #fbbd23;
+    --space-cadet-red-error: #d90429;
 
     /* Floral White Flame */
-    --floralWhiteFlamePrimary: #fffcf2;
-    --floralWhiteFlameSecondary: #2b2d42;
-    --floralWhiteFlameAcccent: #eb5e28;
-    --floralWhiteFlameNeutral: #403d39;
-    --floralWhiteFlameBase100: #252422;
-    --floralWhiteFlameInfo: #3abff8;
-    --floralWhiteFlameSuccess: #36d399;
-    --floralWhiteFlameWarning: #eb5e28;
-    --floralWhiteFlameError: #d90429;
+    --floral-white-flame-primary: #fffcf2;
+    --floral-white-flame-secondary: #2b2d42;
+    --floral-white-flame-accent: #eb5e28;
+    --floral-white-flame-neutral: #403d39;
+    --floral-white-flame-base100: #252422;
+    --floral-white-flame-info: #3abff8;
+    --floral-white-flame-success: #36d399;
+    --floral-white-flame-warning: #eb5e28;
+    --floral-white-flame-error: #d90429;
 
     /* Resetting daisyui Themes */
     --p: var();

@@ -30,7 +30,7 @@ function initScroll() {
     end: 'bottom bottom',
     onEnter: () => console.log('enter'),
     onLeave: () => console.log('leave'),
-    markers: true,
+    // markers: true,
   });
 
   lenis.on('scroll', ({ scroll, progress }: { scroll: number; progress: number }) => {

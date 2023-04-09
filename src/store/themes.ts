@@ -1,9 +1,9 @@
 import colorFunctions from 'daisyui/src/colors/function';
 import { map } from 'nanostores';
 
-// const colorFunctions = import("daisyui/src/colors/function");
+const colorFunctions = import('daisyui/src/colors/function');
 
-const spaceCadetRed = colorFunctions.convertToHsl({
+export const spaceCadetRed = colorFunctions.convertToHsl({
   primary: '#2b2d42',
   secondary: '#8d99ae',
   accent: '#ef233c',
@@ -15,7 +15,7 @@ const spaceCadetRed = colorFunctions.convertToHsl({
   error: '#d90429',
 });
 
-const floralWhiteFlame = colorFunctions.convertToHsl({
+export const floralWhiteFlame = colorFunctions.convertToHsl({
   primary: '#fffcf2',
   secondary: '#2b2d42',
   accent: '#eb5e28',
