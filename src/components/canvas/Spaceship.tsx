@@ -5,7 +5,6 @@ import type { Mesh, MeshStandardMaterial, AnimationAction, Group } from 'three';
 import React, { useEffect, useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
-// import { motion as Motion } from 'framer-motion-3d';
 
 type GLTFResult = GLTF & {
   nodes: {

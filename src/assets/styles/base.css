@@ -15,8 +15,6 @@
     --activeWarning: var(--space-cadet-red-warning);
     --activeError: var(--space-cadet-red-error);
 
-    --b1: var(--activeBase100);
-
     /* Space Red Cadet */
     --space-cadet-red-primary: #2b2d42;
     --space-cadet-red-secondary: #8d99ae;

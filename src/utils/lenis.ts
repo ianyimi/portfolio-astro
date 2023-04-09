@@ -28,8 +28,8 @@ function initScroll() {
     scrub: 1,
     start: 'top top',
     end: 'bottom bottom',
-    onEnter: () => console.log('enter'),
-    onLeave: () => console.log('leave'),
+    // onEnter: () => console.log('enter'),
+    // onLeave: () => console.log('leave'),
     markers: false,
   });
 

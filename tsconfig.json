@@ -11,5 +11,13 @@
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
-  }
+  },
+  "include": [
+    "src/**/*",
+    "modules.d.ts",
+  ],
+  "files": [
+    "node_modules/gsap/types/index.d.ts",
+    "node_modules/@react-three/drei/types/index.d.ts",
+  ]
 }

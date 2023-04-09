@@ -1,18 +1,22 @@
 import Color from 'color';
 import { map } from 'nanostores';
 
+import { COLOR_ROLE, floralWhiteFlameHSL, spaceCadetRedHSL } from '~/utils/themes';
+
 export interface ThemeStore {
-  spaceCadetRed: {
+  light: Record<string, string>;
+  dark: Record<string, string>;
+  spaceCadetRed?: {
     className: string;
     theme: Record<string, string>;
   };
-  floralWhiteFlame: {
+  floralWhiteFlame?: {
     className: string;
     theme: Record<string, string>;
   };
 }
 
-export const spaceCadetRed = convertToHsl({
+export const spaceCadetRedHexColors = {
   primary: '#2b2d42',
   secondary: '#8d99ae',
   accent: '#ef233c',
@@ -22,9 +26,9 @@ export const spaceCadetRed = convertToHsl({
   success: '#36d399',
   warning: '#fbbd23',
   error: '#d90429',
-});
+};
 
-export const floralWhiteFlame = convertToHsl({
+export const floralWhiteFlameHexColors = {
   primary: '#fffcf2',
   secondary: '#2b2d42',
   accent: '#eb5e28',
@@ -34,53 +38,28 @@ export const floralWhiteFlame = convertToHsl({
   success: '#36d399',
   warning: '#eb5e28',
   error: '#d90429',
-});
+};
 
 export const CustomThemes = map<ThemeStore>({
-  spaceCadetRed: {
-    className: 'space-cadet-red',
-    theme: spaceCadetRed,
-  },
-  floralWhiteFlame: {
-    className: 'floral-white-flame',
-    theme: floralWhiteFlame,
-  },
+  light: spaceCadetRedHSL,
+  dark: floralWhiteFlameHSL,
+  // spaceCadetRed: {
+  //   className: 'space-cadet-red',
+  //   theme: convertToHsl(spaceCadetRedHexColors),
+  // },
+  // floralWhiteFlame: {
+  //   className: 'floral-white-flame',
+  //   theme: convertToHsl(floralWhiteFlameHexColors),
+  // },
 });
 
-// function hexToHSL(hex: string) {
-//   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-//     r = parseInt(result[1], 16);
-//     g = parseInt(result[2], 16);
-//     b = parseInt(result[3], 16);
-//     r /= 255, g /= 255, b /= 255;
-//     var max = Math.max(r, g, b), min = Math.min(r, g, b);
-//     var h, s, l = (max + min) / 2;
-//     if(max == min){
-//       h = s = 0; // achromatic
-//     }else{
-//       var d = max - min;
-//       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-//       switch(max){
-//         case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-//         case g: h = (b - r) / d + 2; break;
-//         case b: h = (r - g) / d + 4; break;
-//       }
-//       h /= 6;
-//     }
-//   var HSL = new Object();
-//   HSL['h']=h;
-//   HSL['s']=s;
-//   HSL['l']=l;
-//   return HSL;
-// }
-
-function convertToHsl(input: Record<string, string>) {
+function convertToHsl(input: Record<COLOR_ROLE, string>) {
   const resultObj: Record<string, string> = {};
   if (typeof input === 'object' && input !== null) {
     Object.entries(input).forEach(([rule, value]) => {
       if (Object.keys(COLOR_NAMES).includes(rule)) {
         const hslArray = Color(value).hsl().array();
-        resultObj[COLOR_NAMES[rule]] =
+        resultObj[COLOR_NAMES[rule as COLOR_ROLE]] =
           hslArray[0].toPrecision(5).replace(/\.?0+$/, '') +
           ' ' +
           hslArray[1].toPrecision(5).replace(/\.?0+$/, '') +
@@ -312,7 +291,7 @@ function generateForegroundColorFrom(input: string, percentage = 0.8) {
   }
 }
 
-const COLOR_NAMES: Record<string, string> = {
+const COLOR_NAMES: Record<COLOR_ROLE, string> = {
   primary: '--p',
   'primary-focus': '--pf',
   'primary-content': '--pc',
