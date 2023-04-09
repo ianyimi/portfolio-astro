@@ -1,6 +1,6 @@
 import Lenis from '@studio-freight/lenis';
 
-import { scrollState } from '~/store/scroll';
+import { ScrollState, ScrollTimeline } from '~/store/scroll';
 
 const wrapper = document.getElementById('domContent');
 const content = document.getElementById('content');
@@ -23,19 +23,20 @@ function initScroll() {
 
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.create({
-    // scoller: scroller,
-    trigger: '#name',
+    animation: ScrollTimeline.get().timeline,
+    scroller: wrapper,
+    trigger: content,
     start: 'top top',
-    end: 'bottom top',
+    end: 'bottom bottom',
     onEnter: () => console.log('enter'),
     onLeave: () => console.log('leave'),
-    // markers: true,
+    markers: true,
   });
 
   lenis.on('scroll', ({ scroll, progress }: { scroll: number; progress: number }) => {
     // Is this performant??
-    scrollState.setKey('top', scroll);
-    scrollState.setKey('progress', progress);
     ScrollTrigger.update();
+    ScrollState.setKey('top', scroll);
+    ScrollState.setKey('progress', progress);
   });
 }

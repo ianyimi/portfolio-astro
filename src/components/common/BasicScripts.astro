@@ -3,6 +3,7 @@ import { SITE } from '~/config.mjs';
 ---
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
+  const body = document.querySelector('body');
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.querySelector(':root').classList.add('dark');
@@ -34,6 +35,13 @@ import { SITE } from '~/config.mjs';
   window.onload = function () {
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
+
+    body.classList.remove('loading');
+    gsap.from(body, {
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.inOut',
+    });
 
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
       if (defaultTheme.endsWith(':only')) {

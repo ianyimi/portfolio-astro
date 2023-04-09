@@ -5,7 +5,13 @@ export interface ScrollStore {
   progress: number;
 }
 
-export const scrollState = map<ScrollStore>({
+const timeline = gsap.timeline();
+
+export const ScrollTimeline = map<{ timeline: gsap.core.Timeline }>({
+  timeline: timeline,
+});
+
+export const ScrollState = map<ScrollStore>({
   top: 0,
   progress: 0,
 });

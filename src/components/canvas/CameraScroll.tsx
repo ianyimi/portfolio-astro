@@ -1,13 +1,22 @@
 import { useFrame } from '@react-three/fiber';
 import { damp } from 'three/src/math/MathUtils';
 import { useStore } from '@nanostores/react';
-import { scrollState } from '~/store/scroll';
+import { ScrollState, ScrollTimeline } from '~/store/scroll';
 
 const DELTA = 0.003;
 const SMOOTH = 999999;
 
 export default function CameraScroll() {
-  const { progress } = useStore(scrollState);
+  const { progress } = useStore(ScrollState);
+  const { timeline } = useStore(ScrollTimeline);
+  // gsap.to(':root', {
+  //   '--b1': '259 94% 51%',
+  //   // backgroundColor
+  //   scrollTrigger: { trigger: '#content', start: 'top top', end: 'bottom bottom' },
+  //   repeat: -3,
+  //   yoyo: true,
+  // });
+  // console.log('🚀 ~ file: CameraScroll.tsx:12 ~ CameraScroll ~ timeline:', timeline);
   useFrame(({ viewport, camera }) => {
     camera.position['y'] = -damp(camera.position['y'], progress * viewport.height, SMOOTH, DELTA);
   });
