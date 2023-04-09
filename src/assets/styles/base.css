@@ -6,21 +6,23 @@
   :root {
     /* Active Theme */
     --activePrimary: var(--space-cadet-red-primary);
-    --activeSecondary: var(--space-cadet-red-pecondary);
-    --activeAcccent: var(--space-cadet-red-pcccent);
-    --activeNeutral: var(--space-cadet-red-peutral);
-    --activeBase100: var(--space-cadet-red-pase100);
-    --activeInfo: var(--space-cadet-red-pnfo);
-    --activeSuccess: var(--space-cadet-red-puccess);
-    --activeWarning: var(--space-cadet-red-parning);
-    --activeError: var(--space-cadet-red-prror);
+    --activeSecondary: var(--space-cadet-red-secondary);
+    --activeAcccent: var(--space-cadet-red-accent);
+    --activeNeutral: var(--space-cadet-red-neutral);
+    --activeBase100: var(--space-cadet-red-base-100);
+    --activeInfo: var(--space-cadet-red-info);
+    --activeSuccess: var(--space-cadet-red-success);
+    --activeWarning: var(--space-cadet-red-warning);
+    --activeError: var(--space-cadet-red-error);
+
+    --b1: var(--activeBase100);
 
     /* Space Red Cadet */
     --space-cadet-red-primary: #2b2d42;
     --space-cadet-red-secondary: #8d99ae;
     --space-cadet-red-accent: #ef233c;
     --space-cadet-red-neutral: #edf2f4;
-    --space-cadet-red-base100: #ffffff;
+    --space-cadet-red-base-100: #ffffff;
     --space-cadet-red-info: #3abff8;
     --space-cadet-red-success: #36d399;
     --space-cadet-red-warning: #fbbd23;
@@ -31,7 +33,7 @@
     --floral-white-flame-secondary: #2b2d42;
     --floral-white-flame-accent: #eb5e28;
     --floral-white-flame-neutral: #403d39;
-    --floral-white-flame-base100: #252422;
+    --floral-white-flame-base-100: #252422;
     --floral-white-flame-info: #3abff8;
     --floral-white-flame-success: #36d399;
     --floral-white-flame-warning: #eb5e28;
