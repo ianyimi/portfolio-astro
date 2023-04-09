@@ -36,13 +36,14 @@ import { SITE } from '~/config.mjs';
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
 
+    gsap.registerPlugin(ScrollTrigger);
     body.classList.remove('loading');
     gsap.from(body, {
       opacity: 0,
       duration: 1,
       ease: 'power3.inOut',
     });
-
+    // animations();
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
       if (defaultTheme.endsWith(':only')) {
         return;

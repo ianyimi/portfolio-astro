@@ -63,19 +63,17 @@ const defaultCanvasProps = {
     </script>
 
     <main id="main" class="antialiased text-page bg-light dark:text-slate-300 tracking-tight dark:bg-dark">
-      <!-- <div> -->
       <div id="domContent" class="z-0 fixed inset-0 overflow-y-scroll">
         <div id="wrapper" class="absolute overflow-x-hidden min-w-[100%] min-h-[100%] top-0">
-          <div data-lenis-prevent id="content" class="relative min-h-[200vh]">
+          <div data-lenis-prevent id="content" class="relative min-h-[100vh]">
             <slot />
           </div>
         </div>
       </div>
+      <BasicScripts />
       <div class="-z-[1] fixed top-0 left-0 min-w-[100%] min-h-[100%]">
         <Canvas defaultCanvasProps={defaultCanvasProps} client:only="react" />
       </div>
-      <!-- </div> -->
-      <BasicScripts />
       <style is:global>
         img {
           content-visibility: auto;

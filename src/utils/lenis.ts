@@ -21,21 +21,21 @@ function initScroll() {
     infinite: false,
   });
 
-  gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.create({
     animation: ScrollTimeline.get().timeline,
     scroller: wrapper,
     trigger: content,
+    scrub: 1,
     start: 'top top',
     end: 'bottom bottom',
     onEnter: () => console.log('enter'),
     onLeave: () => console.log('leave'),
-    // markers: true,
+    markers: false,
   });
 
   lenis.on('scroll', ({ scroll, progress }: { scroll: number; progress: number }) => {
     // Is this performant??
-    ScrollTrigger.update();
+    // ScrollTrigger.update();
     ScrollState.setKey('top', scroll);
     ScrollState.setKey('progress', progress);
   });
