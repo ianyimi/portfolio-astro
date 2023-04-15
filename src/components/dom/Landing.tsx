@@ -1,7 +1,7 @@
 export default function Landing() {
   return (
     <div id="landingSplash" className="hero min-h-screen overflow-hidden border-none section-1">
-      <div className="absolute top-10 right-10">
+      <div className="fixed top-10 right-10">
         <input
           id="theme-toggle"
           type="checkbox"
@@ -11,7 +11,7 @@ export default function Landing() {
         />
       </div>
       <div className="hero-content text-center">
-        <div className="max-w-md mb-[250px]">
+        <div className="max-w-md mt-[350px]">
           <h1 id="header" className="text-5xl font-bold">
             Isaiah Anyimi
           </h1>

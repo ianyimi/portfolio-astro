@@ -20,7 +20,7 @@ import { useFrame } from '@react-three/fiber';
 
 const GROUNDS = {
   foreground: {
-    speed: 0.0075,
+    speed: 0.005,
     cutoff: 20,
     respawn: 20,
   },
@@ -43,7 +43,7 @@ export default function EnvironmentHandler() {
     mg2 = useRef<THREE.Group>(null),
     bg = useRef<THREE.Group>(null),
     bg2 = useRef<THREE.Group>(null),
-    groundRefs = [
+    groundRefs: React.RefObject<THREE.Group>[][] = [
       [fg, fg2],
       // [bg, bg2],
     ];
@@ -72,7 +72,7 @@ export default function EnvironmentHandler() {
 
   return (
     <group>
-      <group name="foreground" position={[0, 0.5, 2]}>
+      <group name="foreground" position={[0, 0.75, 5]}>
         <group ref={fg} className="foreground">
           <AmbientParticles />
         </group>

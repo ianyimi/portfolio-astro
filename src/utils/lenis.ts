@@ -28,6 +28,7 @@ function initScroll() {
     scrub: 1,
     start: 'top top',
     end: 'bottom bottom',
+    snap: 1 / 3,
     // onEnter: () => console.log('enter'),
     // onLeave: () => console.log('leave'),
     markers: false,

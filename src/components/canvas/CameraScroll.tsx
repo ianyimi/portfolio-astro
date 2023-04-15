@@ -1,9 +1,9 @@
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { damp } from 'three/src/math/MathUtils';
 import { useStore } from '@nanostores/react';
 import { ScrollState, ScrollTimeline } from '~/store/scroll';
 import { CustomThemes } from '~/store/themes';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDarkMode } from 'usehooks-ts';
 // import resolveConfig from 'tailwindcss/resolveConfig';
 // import tailwindConfig from 'tailwind.config.cjs';
@@ -15,6 +15,7 @@ export default function CameraScroll() {
   const { progress } = useStore(ScrollState);
   const { timeline } = useStore(ScrollTimeline);
   const { light, dark } = useStore(CustomThemes);
+  const { camera, viewport } = useThree();
   const { isDarkMode, enable, disable } = useDarkMode();
   // const tw = resolveConfig(tailwindConfig);
   function handleThemeChange(e: ThemeChangeEvent) {
@@ -27,6 +28,8 @@ export default function CameraScroll() {
   }
 
   useEffect(() => {
+    camera.position['y'] = viewport.height;
+    console.log('🚀 ~ file: CameraScroll.tsx:32 ~ useEffect ~ viewport.height:', viewport.height);
     window.addEventListener('theme-change', handleThemeChange as EventListener);
 
     timeline.to(':root', {
@@ -48,7 +51,7 @@ export default function CameraScroll() {
   }, []);
   // console.log('🚀 ~ file: CameraScroll.tsx:12 ~ CameraScroll ~ timeline:', timeline);
   useFrame(({ viewport, camera }) => {
-    camera.position['y'] = damp(camera.position['y'], progress * viewport.height, SMOOTH, DELTA);
+    camera.position['y'] = -damp(camera.position['y'], progress * viewport.height, SMOOTH, DELTA);
   });
 
   return <group></group>;

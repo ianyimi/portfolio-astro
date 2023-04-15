@@ -6,11 +6,11 @@ import { positions } from './utils/constants';
 
 const COUNT = 500;
 const X_RANGE = 100;
-const Z_RANGE = 10;
+const Z_RANGE = 15;
 const XZ_POW = 1.2;
-const Y_RANGE = 50;
+const Y_RANGE = 9;
 const Y_POW = 2;
-const SCALE = 200;
+const SCALE = 10;
 
 export default function AmbientParticles(props: GroupProps) {
   const mesh = useRef<InstancedMesh>(null);

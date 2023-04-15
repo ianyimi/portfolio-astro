@@ -7,6 +7,10 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:astro/recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
+    ecmaFeatures: {
+      impliedStrict: true,
+      // jsx: true,
+    },
     sourceType: 'module',
   },
   rules: {
@@ -34,7 +38,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js'],
+      files: ['*.js, *.jsx'],
       rules: {
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
       },
@@ -51,7 +55,7 @@ module.exports = {
       },
     },
     {
-      files: ['*.ts'],
+      files: ['*.ts, *.tsx'],
       parser: '@typescript-eslint/parser',
       extends: ['plugin:@typescript-eslint/recommended'],
       plugins: ['@typescript-eslint', 'simple-import-sort'],

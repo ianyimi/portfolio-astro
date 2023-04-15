@@ -1,9 +1,11 @@
+import { useThree } from '@react-three/fiber';
 import Cctvs from './Cctvs';
 
 export default function Contact() {
+  const { viewport } = useThree();
   return (
-    <group>
-      <Cctvs position={[0, -1.25, 3.5]} />
+    <group position-y={-viewport.height}>
+      <Cctvs position={[0, -1.6, 3.5]} />
     </group>
   );
 }

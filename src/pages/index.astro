@@ -1,8 +1,10 @@
 ---
+import About from '~/components/dom/About';
+import Contact from '~/components/dom/Contact';
+import Landing from '~/components/dom/Landing';
+import Work from '~/components/dom/Work';
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
-import Landing from '~/components/dom/Landing';
-import Contact from '~/components/dom/Contact';
 
 const meta = {
   title: SITE.title,
@@ -12,8 +14,12 @@ const meta = {
 ---
 
 <Layout {meta}>
-  <Contact />
-  <Landing />
+  <div>
+    <Landing />
+    <About />
+    <Work />
+    <Contact />
+  </div>
 </Layout>
 
 <script>
