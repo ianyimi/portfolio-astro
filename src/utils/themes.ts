@@ -1,11 +1,11 @@
 export type CUSTOM_THEME = keyof typeof CUSTOM_THEME;
-export type COLOR_ROLE = keyof typeof COLOR_ROLE;
+export type CUSTOM_COLOR = keyof typeof CUSTOM_COLOR;
 export type BASE_COLOR = keyof typeof BASE_COLOR;
 export type FOCUS_COLOR = keyof typeof FOCUS_COLOR;
 export type STATE_COLOR = keyof typeof STATE_COLOR;
 export type CONTENT_COLOR = keyof typeof CONTENT_COLOR;
 
-export const spaceCadetRedHSL = {
+export const spaceCadetRedHSL: Record<string, string> = {
   primary: '235 21% 21%',
   secondary: '218 17% 62%',
   accent: '353 86% 54%',
@@ -28,6 +28,14 @@ export const floralWhiteFlameHSL = {
   warning: '17 83% 54%',
   error: '350 96% 43%',
 };
+
+export function handleThemeChange(event: InputEvent) {
+  const { checked } = event.target as HTMLInputElement;
+  console.log('🚀 ~ file: index.astro:51 ~ toggle.addEventListener ~ checked:', checked);
+  localStorage.setItem('usehooks-ts-darkMode', `${checked}`);
+  const themeChangeEvent = new CustomEvent('theme-change', { detail: checked });
+  document.dispatchEvent(themeChangeEvent);
+}
 
 export function hexToHSL(hex: string): string {
   // Ensure the hex color starts with a '#'
@@ -86,7 +94,7 @@ const CUSTOM_THEME = {
   'floral-white-flame': 'floral-white-flame',
 } as const;
 
-const COLOR_ROLE = {
+const CUSTOM_COLOR = {
   primary: 'primary',
   'primary-focus': 'primary-focus',
   'primary-content': 'primary-content',
@@ -112,7 +120,6 @@ const COLOR_ROLE = {
   error: 'error',
   'error-content': 'error-content',
 } as const;
-
 const FOCUS_COLOR = {
   'primary-focus': 'primary-focus',
   'secondary-focus': 'secondary-focus',

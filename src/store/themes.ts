@@ -1,19 +1,19 @@
 import Color from 'color';
 import { map } from 'nanostores';
 
-import { COLOR_ROLE, CUSTOM_THEME, floralWhiteFlameHSL, spaceCadetRedHSL } from '~/utils/themes';
+import { CUSTOM_COLOR, CUSTOM_THEME, floralWhiteFlameHSL, spaceCadetRedHSL } from '~/utils/themes';
 
 export interface ThemeStore {
   activeTheme: CUSTOM_THEME;
-  light: Record<string, string>;
-  dark: Record<string, string>;
+  light: Record<CUSTOM_COLOR, string>;
+  dark: Record<CUSTOM_COLOR, string>;
   spaceCadetRed?: {
     className: string;
-    theme: Record<string, string>;
+    theme: Record<CUSTOM_COLOR, string>;
   };
   floralWhiteFlame?: {
     className: string;
-    theme: Record<string, string>;
+    theme: Record<CUSTOM_COLOR, string>;
   };
 }
 
@@ -43,7 +43,7 @@ export const floralWhiteFlameHexColors = {
 
 export const CustomThemes = map<ThemeStore>({
   activeTheme: 'light',
-  light: spaceCadetRedHSL,
+  light: spaceCadetRedHSL as CUSTOM_COLOR,
   dark: floralWhiteFlameHSL,
   // spaceCadetRed: {
   //   className: 'space-cadet-red',
@@ -55,13 +55,13 @@ export const CustomThemes = map<ThemeStore>({
   // },
 });
 
-function convertToHsl(input: Record<COLOR_ROLE, string>) {
+function convertToHsl(input: Record<CUSTOM_COLOR, string>) {
   const resultObj: Record<string, string> = {};
   if (typeof input === 'object' && input !== null) {
     Object.entries(input).forEach(([rule, value]) => {
       if (Object.keys(COLOR_NAMES).includes(rule)) {
         const hslArray = Color(value).hsl().array();
-        resultObj[COLOR_NAMES[rule as COLOR_ROLE]] =
+        resultObj[COLOR_NAMES[rule as CUSTOM_COLOR]] =
           hslArray[0].toPrecision(5).replace(/\.?0+$/, '') +
           ' ' +
           hslArray[1].toPrecision(5).replace(/\.?0+$/, '') +
@@ -293,7 +293,7 @@ function generateForegroundColorFrom(input: string, percentage = 0.8) {
   }
 }
 
-const COLOR_NAMES: Record<COLOR_ROLE, string> = {
+const COLOR_NAMES: Record<CUSTOM_COLOR, string> = {
   primary: '--p',
   'primary-focus': '--pf',
   'primary-content': '--pc',

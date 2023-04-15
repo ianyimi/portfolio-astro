@@ -1,6 +1,8 @@
 ---
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
+import Landing from '~/components/dom/Landing';
+import Contact from '~/components/dom/Contact';
 
 const meta = {
   title: SITE.title,
@@ -10,32 +12,26 @@ const meta = {
 ---
 
 <Layout {meta}>
-  <div id="landingSplash" class="hero min-h-screen overflow-hidden border-none section-1">
-    <div class="absolute top-10 right-10">
-      <input
-        type="checkbox"
-        data-toggle-theme="spaceCadetRed,floralWhiteFlame"
-        class="toggle"
-        data-act-class="ACTIVECLASS"
-        checked
-      />
-    </div>
-    <div class="hero-content text-center">
-      <div class="max-w-md mb-[250px]">
-        <h1 id="header" class="text-5xl font-bold">Isaiah Anyimi</h1>
-        <p class="py-6">
-          A front-end engineer creating fast, responsive, and accessible websites using modern web technologies. I enjoy
-          building stunning user interfaces that enhance user experience, promote engagement, and drive conversions.
-        </p>
-        <a
-          class="btn btn-primary sm:btn-sm md:btn-md lg:btn-lg rounded-full"
-          href="https://www.instagram.com/yonkozay/"
-          target="blank">Contact</a
-        >
-      </div>
-    </div>
-  </div>
-  <div class="hero min-h-screen overflow-hidden border-none section-2">
-    <h2 class="text-white">Page 2</h2>
-  </div>
+  <Contact />
+  <Landing />
 </Layout>
+
+<script>
+  const toggle = document.getElementById('#theme-toggle');
+  if (toggle) {
+    toggle.addEventListener('change', (e) => {
+      const { checked } = e.target as HTMLInputElement;
+      console.log('🚀 ~ file: index.astro:51 ~ toggle.addEventListener ~ checked:', checked);
+      localStorage.setItem('usehooks-ts-darkMode', `${checked}`);
+      const event = new CustomEvent('theme-change', { detail: checked });
+      document.dispatchEvent(event);
+    });
+  }
+  // function handleThemeChange(e) {
+  //   const { checked } = e.target;
+  //   console.log('🚀 ~ file: index.astro:51 ~ toggle.addEventListener ~ checked:', checked);
+  //   localStorage.setItem('usehooks-ts-darkMode', checked);
+  //   const event = new CustomEvent('theme-change', { detail: checked });
+  //   document.dispatchEvent(event);
+  // }
+</script>

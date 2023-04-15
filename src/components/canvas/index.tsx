@@ -1,10 +1,9 @@
 import { Canvas } from '@react-three/fiber';
 import { Preload, AdaptiveDpr, Bvh, PerformanceMonitor } from '@react-three/drei';
 import { Suspense } from 'react';
-import Cube from './Cube';
-import Spaceship from './Spaceship';
+import Landing from './Landing';
+import Contact from './Contact';
 import CameraScroll from './CameraScroll';
-import EnvironmentHandler from './EnvironmentHandler';
 
 export default function Scene({ defaultCanvasProps }) {
   const content = document.getElementById('content');
@@ -28,13 +27,11 @@ export default function Scene({ defaultCanvasProps }) {
       <Bvh>
         <AdaptiveDpr />
         <Preload all />
+        <CameraScroll />
         <pointLight intensity={1.0} position={[5, 3, 5]} />
-        <Cube position-x={4} newCamPos={[-2, -1, 3]} />
-        <Cube position-x={-4} newCamPos={[2, 1, 3]} />
         <Suspense fallback={null}>
-          <Spaceship position={[0, -1, 2]} />
-          <CameraScroll />
-          <EnvironmentHandler />
+          <Landing />
+          <Contact />
         </Suspense>
         <PerformanceMonitor />
       </Bvh>
