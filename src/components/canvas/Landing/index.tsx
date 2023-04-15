@@ -8,7 +8,7 @@ export default function Landing() {
     <group>
       {/* <Cube position-x={4} newCamPos={[-2, -1, 3]} />
       <Cube position-x={-4} newCamPos={[2, 1, 3]} /> */}
-      <Spaceship scale={0.5} position={[0, 0.5, 3.75]} />
+      <Spaceship scale={0.35} position={[0, 0.35, 4]} />
       <EnvironmentHandler />
     </group>
   );

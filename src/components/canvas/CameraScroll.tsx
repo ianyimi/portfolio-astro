@@ -32,18 +32,11 @@ export default function CameraScroll() {
     console.log('🚀 ~ file: CameraScroll.tsx:32 ~ useEffect ~ viewport.height:', viewport.height);
     window.addEventListener('theme-change', handleThemeChange as EventListener);
 
-    timeline.to(':root', {
-      '--b1': `${light.secondary}`,
-      // backgroundColor: `#ff0000`,
-      duration: 1,
-      ease: 'none',
-      // scrollTrigger: {
-      //   trigger: '.section-2',
-      //   start: 'top 50%',
-      //   end: 'max',
-      //   markers: true,
-      // },
-    });
+    // timeline.to(':root', {
+    //   '--b1': `${light.secondary}`,
+    //   duration: 1,
+    //   ease: 'none',
+    // });
 
     return () => {
       window.removeEventListener('theme-change', handleThemeChange as EventListener);

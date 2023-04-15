@@ -1,6 +1,6 @@
 export default function Landing() {
   return (
-    <div id="landingSplash" className="hero min-h-screen overflow-hidden border-none section-1">
+    <div id="landing-section" className="hero min-h-screen overflow-hidden border-none section-1">
       <div className="fixed top-10 right-10">
         <input
           id="theme-toggle"
