@@ -25,7 +25,7 @@ function initScroll() {
     animation: ScrollTimeline.get().timeline,
     scroller: wrapper,
     trigger: content,
-    scrub: 1,
+    scrub: 0.25,
     start: 'top top',
     end: 'bottom bottom',
     snap: 1 / 3,

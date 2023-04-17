@@ -17,20 +17,32 @@ export default function CameraScroll() {
   const { light, dark } = useStore(CustomThemes);
   const { camera, viewport } = useThree();
   const { isDarkMode, enable, disable } = useDarkMode();
+
   // const tw = resolveConfig(tailwindConfig);
-  function handleThemeChange(e: ThemeChangeEvent) {
-    console.log('theme change', e.detail);
-    if (e.detail) {
-      enable();
-    } else {
-      disable();
-    }
+  function handleThemeChange(e: MutationRecord[]) {
+    console.log(e);
+    // console.log('theme change', e.detail);
+    // if (e.detail) {
+    //   enable();
+    // } else {
+    //   disable();
+    // }
   }
 
   useEffect(() => {
-    camera.position['y'] = viewport.height;
-    console.log('🚀 ~ file: CameraScroll.tsx:32 ~ useEffect ~ viewport.height:', viewport.height);
-    window.addEventListener('theme-change', handleThemeChange as EventListener);
+    const root = document.querySelector(':root');
+    if (!root) return;
+    console.log(root);
+    const observer = new MutationObserver((event) => handleThemeChange(event));
+
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ['classList'],
+      subtree: true,
+      childList: false,
+      characterData: false,
+    });
+    // window.addEventListener('theme-change', handleThemeChange as EventListener);
 
     // timeline.to(':root', {
     //   '--b1': `${light.secondary}`,
@@ -39,7 +51,7 @@ export default function CameraScroll() {
     // });
 
     return () => {
-      window.removeEventListener('theme-change', handleThemeChange as EventListener);
+      // window.removeEventListener('theme-change', handleThemeChange as EventListener);
     };
   }, []);
   // console.log('🚀 ~ file: CameraScroll.tsx:12 ~ CameraScroll ~ timeline:', timeline);

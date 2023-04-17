@@ -5,7 +5,7 @@ export interface ScrollStore {
   progress: number;
 }
 
-const timeline = gsap.timeline();
+export const timeline = gsap.timeline();
 
 export const ScrollTimeline = map<{ timeline: gsap.core.Timeline }>({
   timeline: timeline,
