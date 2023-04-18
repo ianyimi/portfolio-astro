@@ -1,4 +1,7 @@
+import { useDarkMode } from 'usehooks-ts';
+
 export default function Landing() {
+  const { isDarkMode } = useDarkMode();
   return (
     <div id="landing-section" className="grid place-items-center min-h-screen min-w-screen overflow-hidden border-none">
       <div className="fixed top-10 right-10">
@@ -8,6 +11,7 @@ export default function Landing() {
           data-toggle-theme="spaceCadetRed,floralWhiteFlame"
           className="toggle"
           data-act-class="ACTIVECLASS"
+          defaultChecked={isDarkMode}
         />
       </div>
       <div className="hero-content text-center">
