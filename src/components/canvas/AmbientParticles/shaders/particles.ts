@@ -1,10 +1,8 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { ShaderMaterial, ShaderMaterialParameters, Uniform, Vector3 } from 'three';
-import { useDarkMode } from 'usehooks-ts';
 
 import vert from './particle.vert';
 import frag from './particle.frag';
-import { useFrame } from '@react-three/fiber';
 
 export const useParticleMaterial = (shaderParams?: Partial<ShaderMaterialParameters>) => {
   const color = new Vector3();

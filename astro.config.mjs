@@ -56,6 +56,9 @@ export default defineConfig({
   ],
   vite: {
     plugins: [glsl()],
+    ssr: {
+      noExternal: ['usehooks-ts'],
+    },
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
