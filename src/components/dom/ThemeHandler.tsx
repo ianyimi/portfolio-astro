@@ -5,7 +5,6 @@ export default function ThemeHandler() {
   useEffect(() => {
     const root = document.querySelector(':root');
     if (!root) return;
-    console.log(root);
     const observer = new MutationObserver((event) => handleThemeChange(event));
 
     observer.observe(root, {
@@ -16,9 +15,8 @@ export default function ThemeHandler() {
       characterData: true,
     });
   }, []);
-  const { isDarkMode, enable, disable } = useDarkMode();
+  const { enable, disable } = useDarkMode();
 
-  // const tw = resolveConfig(tailwindConfig);
   function handleThemeChange(e: MutationRecord[]) {
     const isDark = (e[0].target as HTMLInputElement).checked;
     if (isDark) {
