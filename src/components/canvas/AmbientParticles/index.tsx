@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { InstancedBufferAttribute, InstancedBufferGeometry, InstancedMesh, Object3D, Group } from 'three';
 import { GroupProps, useFrame } from '@react-three/fiber';
 import { positions } from './utils/constants';
+import { useDarkMode } from 'usehooks-ts';
 
 const COUNT = 500;
 const X_RANGE = 100;
@@ -14,11 +15,23 @@ const SCALE = 10;
 
 export default function AmbientParticles(props: GroupProps) {
   const mesh = useRef<InstancedMesh>(null);
+  const { isDarkMode } = useDarkMode();
+  const darkModeInterpolationConstant = { value: 0 };
 
   const particleMaterial = useParticleMaterial();
 
   const dummy = useMemo(() => new Object3D(), []);
   const generate = false;
+
+  useEffect(() => {
+    if (!particleMaterial) return;
+    if (isDarkMode) {
+      gsap.to(darkModeInterpolationConstant, { value: 1, duration: 2 });
+    } else {
+      gsap.to(darkModeInterpolationConstant, { value: 0, duration: 2 });
+    }
+    // particleMaterial.uniforms.isDarkMode.value = isDarkMode ? 1 : 0;
+  }, [isDarkMode]);
 
   useEffect(() => {
     if (!mesh.current) return;
@@ -59,6 +72,9 @@ export default function AmbientParticles(props: GroupProps) {
   useFrame(({ clock }) => {
     if (!particleMaterial) return;
     particleMaterial.uniforms.time.value = clock.getElapsedTime() * 0.4;
+    particleMaterial.uniforms.isDarkMode.value = darkModeInterpolationConstant.value;
+    // console.log(particleMaterial.uniforms.isDarkMode.value);
+    // particleMaterial.uniforms.isDarkMode.value = isDarkMode ? 1 : 0;
   });
 
   return (

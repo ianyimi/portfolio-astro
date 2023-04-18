@@ -1,19 +1,27 @@
-import { useMemo } from 'react';
-import { ShaderMaterial, ShaderMaterialParameters, Uniform } from 'three';
+import { useEffect, useMemo } from 'react';
+import { ShaderMaterial, ShaderMaterialParameters, Uniform, Vector3 } from 'three';
+import { useDarkMode } from 'usehooks-ts';
 
 import vert from './particle.vert';
 import frag from './particle.frag';
+import { useFrame } from '@react-three/fiber';
 
 export const useParticleMaterial = (shaderParams?: Partial<ShaderMaterialParameters>) => {
+  const color = new Vector3();
+  const fogColor = new Vector3(255, 255, 255);
+
   return useMemo(
     () =>
       new ShaderMaterial({
         uniforms: {
           time: new Uniform(0),
-          color: new Uniform({ r: 0, g: 0, b: 0 }),
-          fogColor: new Uniform({ r: 1, g: 1, b: 1 }),
+          isDarkMode: new Uniform(0),
+          color: new Uniform(color),
+          darkModeColor: new Uniform(fogColor),
+          fogColor: new Uniform(color),
+          darkModeFogColor: new Uniform(fogColor),
           fogNear: new Uniform(1.0),
-          fogFar: new Uniform(10),
+          fogFar: new Uniform(5),
         },
         vertexShader: vert,
         fragmentShader: frag,
