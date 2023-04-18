@@ -8,6 +8,7 @@ const content = document.getElementById('content');
 initScroll();
 function initScroll() {
   if (!window || !wrapper || !content) return;
+  gsap.registerPlugin(ScrollTrigger);
   const lenis = new Lenis({
     wrapper: wrapper,
     content: content,
@@ -36,7 +37,7 @@ function initScroll() {
 
   lenis.on('scroll', ({ scroll, progress }: { scroll: number; progress: number }) => {
     // Is this performant??
-    ScrollTrigger.update();
+    // ScrollTrigger.update();
     ScrollState.setKey('top', scroll);
     ScrollState.setKey('progress', progress);
   });

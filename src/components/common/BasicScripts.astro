@@ -37,7 +37,7 @@
 
   window.onload = function () {
     document.body.classList.remove('loading');
-    gsapAnimations(':root');
+    gsapAnimations();
 
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
       if (defaultTheme.endsWith(':only')) {

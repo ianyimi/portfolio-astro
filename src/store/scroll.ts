@@ -5,6 +5,7 @@ export interface ScrollStore {
   progress: number;
 }
 
+gsap.registerPlugin(ScrollTrigger);
 export const timeline = gsap.timeline();
 
 export const ScrollTimeline = map<{ timeline: gsap.core.Timeline }>({

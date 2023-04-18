@@ -2,6 +2,7 @@
 import About from '~/components/dom/About';
 import Contact from '~/components/dom/Contact';
 import Landing from '~/components/dom/Landing';
+import ThemeHandler from '~/components/dom/ThemeHandler';
 import Work from '~/components/dom/Work';
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
@@ -15,6 +16,7 @@ const meta = {
 
 <Layout {meta}>
   <div>
+    <ThemeHandler client:load />
     <Landing />
     <About />
     <Work />
