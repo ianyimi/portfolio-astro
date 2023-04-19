@@ -18,7 +18,7 @@ module.exports = {
     'func-names': 'off',
     'object-shorthand': 'off',
     'no-underscore-dangle': 'off',
-    'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.astro', '.jsx', '.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'simple-import-sort/imports': [
       'error',

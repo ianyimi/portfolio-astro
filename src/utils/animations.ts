@@ -6,6 +6,10 @@ const B1 = '--b1';
 export function gsapAnimations() {
   console.log('animations');
 
+  timeline.to(':root', {
+    '--b1': '0 0% 0%',
+    ease: 'none',
+  });
   // timeline
   //   .to(TARGET, {
   //     [B1]: '186, 100%, 50%',
