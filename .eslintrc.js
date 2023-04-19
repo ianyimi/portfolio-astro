@@ -4,7 +4,7 @@ module.exports = {
     es2022: true,
     browser: true,
   },
-  extends: ['eslint:recommended', 'plugin:astro/recommended'],
+  extends: ['prettier', 'eslint:recommended', 'plugin:astro/recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
     ecmaFeatures: {
@@ -13,7 +13,13 @@ module.exports = {
     },
     sourceType: 'module',
   },
+  plugins: ['prettier', 'astro', 'react', 'simple-import-sort'],
   rules: {
+    'func-names': 'off',
+    'object-shorthand': 'off',
+    'no-underscore-dangle': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
+    'react/react-in-jsx-scope': 'off',
     'simple-import-sort/imports': [
       'error',
       {
@@ -57,8 +63,8 @@ module.exports = {
     {
       files: ['*.ts, *.tsx'],
       parser: '@typescript-eslint/parser',
-      extends: ['plugin:@typescript-eslint/recommended'],
-      plugins: ['@typescript-eslint', 'simple-import-sort'],
+      extends: ['airbnb', 'prettier', 'plugin:@typescript-eslint/recommended'],
+      plugins: ['@typescript-eslint', 'prettier', 'simple-import-sort'],
       rules: {
         '@typescript-eslint/no-unused-vars': [
           'error',
