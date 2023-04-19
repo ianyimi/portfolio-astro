@@ -72,7 +72,7 @@ export default function EnvironmentHandler() {
 
   return (
     <group>
-      <group name="foreground" position={[0, 0.75, 5]}>
+      <group name="foreground" position={[0, 0.4, 1]}>
         <group ref={fg} className="foreground">
           <AmbientParticles />
         </group>

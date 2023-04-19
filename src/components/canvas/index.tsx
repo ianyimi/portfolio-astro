@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber';
 import { Preload, AdaptiveDpr, Bvh, PerformanceMonitor } from '@react-three/drei';
 import { Suspense } from 'react';
 import Landing from './Landing';
+import About from './About';
 import Contact from './Contact';
 import CameraScroll from './CameraScroll';
 
@@ -31,6 +32,7 @@ export default function Scene({ defaultCanvasProps }) {
         <pointLight intensity={1.0} position={[5, 3, 5]} />
         <Suspense fallback={null}>
           <Landing />
+          <About />
           <Contact />
         </Suspense>
         <PerformanceMonitor />

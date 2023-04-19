@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 NAME=$1
+GLTFJSX_OPTIONS=$2
 
 handle_error () { echo -e "\n🛑 ERRORED"; exit; }
 
@@ -55,7 +56,7 @@ echo -e "👉 Found\t\t${STAGED_FILE}"
 #echo -e "👉 Draco\t\tComplete"
 
 # gltfjsx
-npx gltfjsx "${STAGED_FILE}" --types --keepnames --shadows --transform --simplify || handle_error
+npx gltfjsx "${STAGED_FILE}" "${GLTFJSX_OPTIONS}" --types --keepnames --shadows --transform --simplify || handle_error
 echo -e "👉 Gltfjsx\t\tComplete"
 
 #gzip
