@@ -16,8 +16,12 @@ function randomPositionVector(constraint: number | [number, number, number]) {
   }
 }
 
-export function generateInstancedModelData(constraint: number | [number, number, number], scaleVariance?: number) {
-  const data = Array.from({ length: 1000 }, () => {
+export function generateInstancedModelData(
+  count: number,
+  constraint: number | [number, number, number],
+  scaleVariance?: number
+) {
+  const data = Array.from({ length: count }, () => {
     return {
       position: randomPositionVector(constraint),
       // color: [Math.random(), Math.random(), Math.random(), 1],
