@@ -27,81 +27,86 @@ type GLTFResult = GLTF & {
 
 const FILE_URL = 'https://dqeczc7c9n9n1.cloudfront.net/models/clouds-1681977951/clouds.glb';
 const RESPAWN_CUTOFF = 5;
+const CLOUD_TYPES = 5;
 
 export default function Models(props: JSX.IntrinsicElements['group']) {
   const range = useControls({ clouds: { value: 50, min: 10, max: 100, step: 10 } });
   const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
-  const data = generateInstancedModelData(range.clouds, [10, 1.75, 0.1], 0.01);
-  const cloudVariants = useRef<
-    {
-      position: Vector3;
-      scale: number;
-    }[][]
-  >(new Array(5).fill([]));
-  useEffect(() => {
-    data.forEach((instance, i) => {
-      cloudVariants.current[i % 5].push({ position: instance.position, scale: instance.scale });
-    });
-    console.log(cloudVariants.current);
-  }, []);
+  const cloudOnes = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
+  const cloudTwos = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
+  const cloudThrees = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
+  const cloudFours = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
+  const cloudZeros = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
+  // const cloudVariants = useRef<
+  //   {
+  //     position: Vector3;
+  //     scale: number;
+  //   }[][]
+  // >(new Array(5).fill([]));
+  // useEffect(() => {
+  //   data.forEach((instance, i) => {
+  //     cloudVariants.current[i % 5].push({ position: instance.position, scale: instance.scale });
+  //   });
+  //   console.log(cloudVariants.current);
+  // }, []);
 
   return (
     <group {...props} dispose={null}>
       <Instances
-        range={range.clouds / cloudVariants.current.length}
+        range={range.clouds / CLOUD_TYPES}
         material={materials.aiStandardSurface1SG}
         geometry={nodes.cloudOne.geometry}
       >
         <group>
-          {cloudVariants.current[0].map((props, i) => (
+          {cloudOnes.map((props, i) => (
             <InstancedModel key={i} {...props} />
           ))}
         </group>
       </Instances>
-      {/* <Instances
-        range={range.clouds / cloudVariants.current.length}
+      <Instances
+        range={range.clouds / CLOUD_TYPES}
         material={materials.aiStandardSurface1SG}
         geometry={nodes.cloudTwo.geometry}
       >
         <group>
-          {data.map((props, i) => (
+          {cloudTwos.map((props, i) => (
             <InstancedModel key={i} {...props} />
           ))}
         </group>
       </Instances>
       <Instances
-        range={range.clouds / cloudVariants.current.length}
+        range={range.clouds / CLOUD_TYPES}
         material={materials.aiStandardSurface1SG}
         geometry={nodes.CloudThree.geometry}
       >
         <group>
-          {data.map((props, i) => (
+          {cloudThrees.map((props, i) => (
             <InstancedModel key={i} {...props} />
           ))}
         </group>
       </Instances>
       <Instances
-        range={range.clouds / cloudVariants.current.length}
+        range={range.clouds / CLOUD_TYPES}
         material={materials.aiStandardSurface1SG}
         geometry={nodes.cloudFour.geometry}
       >
         <group>
-          {data.map((props, i) => (
+          {cloudFours.map((props, i) => (
             <InstancedModel key={i} {...props} />
           ))}
         </group>
       </Instances>
       <Instances
-        range={range.clouds / cloudVariants.current.length}
+        range={range.clouds / CLOUD_TYPES}
         material={materials.aiStandardSurface1SG}
         geometry={nodes.cloudZero.geometry}
       >
         <group>
-          {data.map((props, i) => (
+          {cloudZeros.map((props, i) => (
             <InstancedModel key={i} {...props} />
           ))}
         </group>
-      </Instances> */}
+      </Instances>
     </group>
   );
 }
