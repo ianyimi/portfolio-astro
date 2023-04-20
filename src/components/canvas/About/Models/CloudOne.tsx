@@ -9,35 +9,99 @@ import { useControls } from 'leva';
 import { useGLTF, Instances, Instance } from '@react-three/drei';
 import type { GLTF } from 'three-stdlib';
 import { generateInstancedModelData } from '~/utils/canvas';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 
 type GLTFResult = GLTF & {
   nodes: {
+    cloudZero: Mesh;
     cloudOne: Mesh;
+    cloudTwo: Mesh;
+    CloudThree: Mesh;
+    cloudFour: Mesh;
   };
   materials: {
     aiStandardSurface1SG: MeshStandardMaterial;
   };
 };
 
-const FILE_URL = 'https://dqeczc7c9n9n1.cloudfront.net/models/cloudOne-1681881812/cloudOne.glb';
+const FILE_URL = 'https://dqeczc7c9n9n1.cloudfront.net/models/clouds-1681977951/clouds.glb';
 const RESPAWN_CUTOFF = 5;
 
 export default function Models(props: JSX.IntrinsicElements['group']) {
   const range = useControls({ clouds: { value: 50, min: 10, max: 100, step: 10 } });
   const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
-  const data = generateInstancedModelData([10, 1.75, 0.1], 0.01);
+  const data = generateInstancedModelData(range.clouds, [10, 1.75, 0.1], 0.01);
+  const cloudVariants = useRef<
+    {
+      position: Vector3;
+      scale: number;
+    }[][]
+  >(new Array(5).fill([]));
+  useEffect(() => {
+    data.forEach((instance, i) => {
+      cloudVariants.current[i % 5].push({ position: instance.position, scale: instance.scale });
+    });
+    console.log(cloudVariants.current);
+  }, []);
 
   return (
     <group {...props} dispose={null}>
-      <Instances range={range.clouds} material={materials.aiStandardSurface1SG} geometry={nodes.cloudOne.geometry}>
+      <Instances
+        range={range.clouds / cloudVariants.current.length}
+        material={materials.aiStandardSurface1SG}
+        geometry={nodes.cloudOne.geometry}
+      >
+        <group>
+          {cloudVariants.current[0].map((props, i) => (
+            <InstancedModel key={i} {...props} />
+          ))}
+        </group>
+      </Instances>
+      {/* <Instances
+        range={range.clouds / cloudVariants.current.length}
+        material={materials.aiStandardSurface1SG}
+        geometry={nodes.cloudTwo.geometry}
+      >
         <group>
           {data.map((props, i) => (
             <InstancedModel key={i} {...props} />
           ))}
         </group>
       </Instances>
+      <Instances
+        range={range.clouds / cloudVariants.current.length}
+        material={materials.aiStandardSurface1SG}
+        geometry={nodes.CloudThree.geometry}
+      >
+        <group>
+          {data.map((props, i) => (
+            <InstancedModel key={i} {...props} />
+          ))}
+        </group>
+      </Instances>
+      <Instances
+        range={range.clouds / cloudVariants.current.length}
+        material={materials.aiStandardSurface1SG}
+        geometry={nodes.cloudFour.geometry}
+      >
+        <group>
+          {data.map((props, i) => (
+            <InstancedModel key={i} {...props} />
+          ))}
+        </group>
+      </Instances>
+      <Instances
+        range={range.clouds / cloudVariants.current.length}
+        material={materials.aiStandardSurface1SG}
+        geometry={nodes.cloudZero.geometry}
+      >
+        <group>
+          {data.map((props, i) => (
+            <InstancedModel key={i} {...props} />
+          ))}
+        </group>
+      </Instances> */}
     </group>
   );
 }
@@ -59,7 +123,7 @@ function InstancedModel(props: { scale: number } & JSX.IntrinsicElements['group'
       ref.current.position.x -= 400 - 1 / props.scale;
       gsap.to(ref.current.scale, { x: 1, y: 1, z: 1, duration: 2, ease: 'elastic.out(1, 0.3)' });
     } else {
-      ref.current.position.x += 0.0075 / props.scale;
+      ref.current.position.x += 0.075 / props.scale;
     }
     ref.current.scale.x =
       ref.current.scale.y =
