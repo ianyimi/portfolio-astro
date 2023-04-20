@@ -3,13 +3,13 @@ import { timeline } from '~/store/scroll';
 import { floralWhiteFlameHSL, spaceCadetRedHSL } from './themes';
 
 const TARGET = ':root';
-const B1 = '--b1';
+const BACKGROUND_COLOR = '--b1';
 
 export function gsapAnimations() {
   console.log('animations');
 
   timeline
-    .fromTo(TARGET, { [B1]: spaceCadetRedHSL.neutral }, { [B1]: '192 100% 50%' })
-    .to(TARGET, { [B1]: spaceCadetRedHSL.neutral })
-    .to(TARGET, { [B1]: floralWhiteFlameHSL.neutral });
+    .fromTo(TARGET, { [BACKGROUND_COLOR]: spaceCadetRedHSL.neutral }, { [BACKGROUND_COLOR]: '192 100% 50%' })
+    .to(TARGET, { [BACKGROUND_COLOR]: spaceCadetRedHSL.neutral })
+    .to(TARGET, { [BACKGROUND_COLOR]: floralWhiteFlameHSL.neutral });
 }
