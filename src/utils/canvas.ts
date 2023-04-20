@@ -19,13 +19,14 @@ function randomPositionVector(constraint: number | [number, number, number]) {
 export function generateInstancedModelData(
   count: number,
   constraint: number | [number, number, number],
-  scaleVariance?: number
+  scaleVariance: number = 0,
+  scaleMultiplier: number = 1
 ) {
   const data = Array.from({ length: count }, () => {
     return {
       position: randomPositionVector(constraint),
+      scale: scaleMultiplier + Math.random() * scaleVariance,
       // color: [Math.random(), Math.random(), Math.random(), 1],
-      scale: scaleVariance ? Math.random() * (0.5 + scaleVariance) + 0.5 : 1,
     };
   });
   return data;
