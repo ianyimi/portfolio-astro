@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import Landing from './Landing';
 import About from './About';
 import Contact from './Contact';
+import Work from './Work';
 import CameraScroll from './CameraScroll';
 
 export default function Scene({ defaultCanvasProps }) {
@@ -33,6 +34,7 @@ export default function Scene({ defaultCanvasProps }) {
         <Suspense fallback={null}>
           <Landing />
           <About />
+          <Work />
           <Contact />
         </Suspense>
         <PerformanceMonitor />
