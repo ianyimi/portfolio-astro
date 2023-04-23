@@ -56,7 +56,7 @@ echo -e "👉 Found\t\t${STAGED_FILE}"
 #echo -e "👉 Draco\t\tComplete"
 
 # gltfjsx
-npx gltfjsx "${STAGED_FILE}" "${GLTFJSX_OPTIONS}" --types --keepnames --shadows --transform --simplify || handle_error
+npx gltfjsx "${STAGED_FILE}" "${GLTFJSX_OPTIONS}" --types --keepnames --transform --simplify || handle_error
 echo -e "👉 Gltfjsx\t\tComplete"
 
 #gzip
