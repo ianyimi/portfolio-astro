@@ -39,6 +39,7 @@ export default function Clouds(props: JSX.IntrinsicElements['group']) {
   const cloudZeroInstancedData = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
 
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading, react/no-unknown-property
     <group {...props} dispose={null}>
       <Instances
         range={range.clouds / CLOUD_TYPES}
@@ -46,8 +47,8 @@ export default function Clouds(props: JSX.IntrinsicElements['group']) {
         geometry={nodes.cloudOne.geometry}
       >
         <group>
-          {cloudOneInstancedData.map((props, i) => (
-            <InstancedCloud key={i} {...props} />
+          {cloudOneInstancedData.map((instancedData) => (
+            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
           ))}
         </group>
       </Instances>
@@ -57,8 +58,8 @@ export default function Clouds(props: JSX.IntrinsicElements['group']) {
         geometry={nodes.cloudTwo.geometry}
       >
         <group>
-          {cloudTwoInstancedData.map((props, i) => (
-            <InstancedCloud key={i} {...props} />
+          {cloudTwoInstancedData.map((instancedData) => (
+            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
           ))}
         </group>
       </Instances>
@@ -68,8 +69,8 @@ export default function Clouds(props: JSX.IntrinsicElements['group']) {
         geometry={nodes.CloudThree.geometry}
       >
         <group>
-          {cloudThreeInstancedData.map((props, i) => (
-            <InstancedCloud key={i} {...props} />
+          {cloudThreeInstancedData.map((instancedData) => (
+            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
           ))}
         </group>
       </Instances>
@@ -79,8 +80,8 @@ export default function Clouds(props: JSX.IntrinsicElements['group']) {
         geometry={nodes.cloudFour.geometry}
       >
         <group>
-          {cloudFourInstancedData.map((props, i) => (
-            <InstancedCloud key={i} {...props} />
+          {cloudFourInstancedData.map((instancedData) => (
+            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
           ))}
         </group>
       </Instances>
@@ -90,8 +91,8 @@ export default function Clouds(props: JSX.IntrinsicElements['group']) {
         geometry={nodes.cloudZero.geometry}
       >
         <group>
-          {cloudZeroInstancedData.map((props, i) => (
-            <InstancedCloud key={i} {...props} />
+          {cloudZeroInstancedData.map((instancedData) => (
+            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
           ))}
         </group>
       </Instances>

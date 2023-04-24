@@ -13,11 +13,29 @@ module.exports = {
     },
     sourceType: 'module',
   },
-  plugins: ['prettier', 'astro', 'react', '@typescript-eslint', 'simple-import-sort'],
+  plugins: ['prettier', 'astro', 'react', '@typescript-eslint', 'simple-import-sort', 'import'],
+  settings: {
+    'import/resolver': {
+      'typescript': {
+        'alwaysTryTypes': true,
+      },
+    }
+  },
   rules: {
     'func-names': 'off',
     'object-shorthand': 'off',
     'no-underscore-dangle': 'off',
+    'import/extensions': [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    'react/require-default-props': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.astro', '.jsx', '.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'simple-import-sort/imports': [

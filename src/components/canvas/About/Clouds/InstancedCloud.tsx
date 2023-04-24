@@ -6,8 +6,8 @@ import { useFrame } from '@react-three/fiber';
 
 const RESPAWN_CUTOFF = 5;
 
-export default function InstancedCloud(props: { scale: number } & JSX.IntrinsicElements['group']) {
-  const { scale } = props;
+export default function InstancedCloud(props: { scale?: number } & JSX.IntrinsicElements['group']) {
+  const { scale = 1, ...restProps } = props;
   const ref = useRef<Group>();
   const currentWorldPosition = useRef(new Vector3());
   const [hovered, setHover] = useState(false);
@@ -32,8 +32,8 @@ export default function InstancedCloud(props: { scale: number } & JSX.IntrinsicE
   });
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <group {...props}>
-      <group scale={0.025 * (scale ?? 1)}>
+    <group {...restProps}>
+      <group scale={0.025 * scale}>
         <Instance
           ref={ref}
           onPointerOver={() => setHover(true)}
