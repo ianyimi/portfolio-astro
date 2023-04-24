@@ -1,6 +1,6 @@
 import { useParticleMaterial } from './shaders/particles';
 import { useEffect, useMemo, useRef } from 'react';
-import { InstancedBufferAttribute, InstancedBufferGeometry, InstancedMesh, Object3D } from 'three/src/Three';
+import { InstancedBufferAttribute, InstancedBufferGeometry, InstancedMesh, Object3D } from 'three';
 import { GroupProps, useFrame } from '@react-three/fiber';
 import { positions } from './utils/constants';
 import { useDarkMode } from 'usehooks-ts';

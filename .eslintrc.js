@@ -4,16 +4,16 @@ module.exports = {
     es2022: true,
     browser: true,
   },
-  extends: ['prettier', 'eslint:recommended', 'plugin:astro/recommended'],
+  extends: ['airbnb', 'plugin:astro/recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'plugin:astro/recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
     ecmaFeatures: {
       impliedStrict: true,
-      // jsx: true,
+      jsx: true,
     },
     sourceType: 'module',
   },
-  plugins: ['prettier', 'astro', 'react', 'simple-import-sort'],
+  plugins: ['prettier', 'astro', 'react', '@typescript-eslint', 'simple-import-sort'],
   rules: {
     'func-names': 'off',
     'object-shorthand': 'off',
@@ -44,12 +44,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js, *.jsx'],
-      rules: {
-        'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
-      },
-    },
-    {
       files: ['*.astro'],
       parser: 'astro-eslint-parser',
       parserOptions: {
@@ -61,7 +55,7 @@ module.exports = {
       },
     },
     {
-      files: ['*.ts, *.tsx'],
+      files: ['*.js, *.jsx, *.ts, *.tsx'],
       parser: '@typescript-eslint/parser',
       extends: ['airbnb', 'prettier', 'plugin:@typescript-eslint/recommended'],
       plugins: ['@typescript-eslint', 'prettier', 'simple-import-sort'],
