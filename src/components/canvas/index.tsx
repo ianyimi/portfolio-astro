@@ -9,7 +9,6 @@ import CameraScroll from './CameraScroll';
 
 export default function Scene({ defaultCanvasProps }) {
   const content = document.getElementById('content');
-  const contentY = content?.getBoundingClientRect().top;
   return (
     <Canvas
       id="canvas"
