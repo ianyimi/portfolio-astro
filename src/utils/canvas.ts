@@ -18,7 +18,7 @@ function randomPositionVector(constraint: number | [number, number, number]) {
 
 export function generateInstancedModelData(
   count: number,
-  constraint: number | [number, number, number],
+  constraint: number | number[],
   scaleVariance = 0,
   scaleMultiplier = 1
 ) {

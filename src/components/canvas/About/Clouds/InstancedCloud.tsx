@@ -5,6 +5,7 @@ import { Instance } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
 const RESPAWN_CUTOFF = 5;
+const CLOUD_SPEED = 0.0075;
 
 export default function InstancedCloud(props: { scale?: number } & JSX.IntrinsicElements['group']) {
   const { scale = 1, ...restProps } = props;
@@ -20,7 +21,7 @@ export default function InstancedCloud(props: { scale?: number } & JSX.Intrinsic
       ref.current.position.x -= 400 - 1 / scale;
       gsap.to(ref.current.scale, { x: 1, y: 1, z: 1, duration: 2, ease: 'elastic.out(1, 0.3)' });
     } else {
-      ref.current.position.x += 0.0075 / scale;
+      ref.current.position.x += CLOUD_SPEED / scale;
     }
     ref.current.scale.x =
     // eslint-disable-next-line no-multi-assign

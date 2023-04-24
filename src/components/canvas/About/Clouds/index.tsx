@@ -4,6 +4,7 @@ Command: npx gltfjsx@6.1.4 public/staging/cloudOne/cloudOne.glb  --types --keepn
 */
 
 import { useControls } from 'leva';
+import { nanoid } from "nanoid";
 import type { Mesh, MeshStandardMaterial } from 'three';
 import type { GLTF } from 'three-stdlib';
 
@@ -28,74 +29,35 @@ type GLTFResult = GLTF & {
 
 const FILE_URL = 'https://dqeczc7c9n9n1.cloudfront.net/models/clouds-1681977951/clouds.glb';
 const CLOUD_TYPES = 5;
+const SCALE_CONSTRAINTS = [10, 1.75, 0.1]
+const SCALE_VARIANCE = 0.0075;
 
 export default function Clouds(props: JSX.IntrinsicElements['group']) {
   const range = useControls({ clouds: { value: 50, min: 10, max: 100, step: 10 } });
   const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
-  const cloudOneInstancedData = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
-  const cloudTwoInstancedData = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
-  const cloudThreeInstancedData = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
-  const cloudFourInstancedData = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
-  const cloudZeroInstancedData = generateInstancedModelData(range.clouds / CLOUD_TYPES, [10, 1.75, 0.1], 0.01);
+  const geometryIndexMap = ['cloudOne', 'cloudTwo', 'CloudThree', 'cloudFour', 'cloudZero'];
+
+  // 5 Different Cloud Variations
+  const cloudVariants = Array.from({ length: CLOUD_TYPES }, () => generateInstancedModelData(range.clouds / CLOUD_TYPES, SCALE_CONSTRAINTS, SCALE_VARIANCE));
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading, react/no-unknown-property
     <group {...props} dispose={null}>
-      <Instances
-        range={range.clouds / CLOUD_TYPES}
-        material={materials.aiStandardSurface1SG}
-        geometry={nodes.cloudOne.geometry}
-      >
-        <group>
-          {cloudOneInstancedData.map((instancedData) => (
-            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
-          ))}
-        </group>
-      </Instances>
-      <Instances
-        range={range.clouds / CLOUD_TYPES}
-        material={materials.aiStandardSurface1SG}
-        geometry={nodes.cloudTwo.geometry}
-      >
-        <group>
-          {cloudTwoInstancedData.map((instancedData) => (
-            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
-          ))}
-        </group>
-      </Instances>
-      <Instances
-        range={range.clouds / CLOUD_TYPES}
-        material={materials.aiStandardSurface1SG}
-        geometry={nodes.CloudThree.geometry}
-      >
-        <group>
-          {cloudThreeInstancedData.map((instancedData) => (
-            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
-          ))}
-        </group>
-      </Instances>
-      <Instances
-        range={range.clouds / CLOUD_TYPES}
-        material={materials.aiStandardSurface1SG}
-        geometry={nodes.cloudFour.geometry}
-      >
-        <group>
-          {cloudFourInstancedData.map((instancedData) => (
-            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
-          ))}
-        </group>
-      </Instances>
-      <Instances
-        range={range.clouds / CLOUD_TYPES}
-        material={materials.aiStandardSurface1SG}
-        geometry={nodes.cloudZero.geometry}
-      >
-        <group>
-          {cloudZeroInstancedData.map((instancedData) => (
-            <InstancedCloud key={new Date().getTime()} position={instancedData.position} scale={instancedData.scale} />
-          ))}
-        </group>
-      </Instances>
+      {cloudVariants.map((cloudVariant, index) => (
+        <Instances
+          range={range.clouds / CLOUD_TYPES}
+          material={materials.aiStandardSurface1SG}
+          key={nanoid()}
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          geometry={nodes[geometryIndexMap[`${index}`]]!.geometry}
+        >
+          <group>
+            {cloudVariant.map((instancedData) => (
+              <InstancedCloud key={nanoid()} position={instancedData.position} scale={instancedData.scale} />
+            ))}
+          </group>
+        </Instances>
+      ))}
     </group>
   );
 }
