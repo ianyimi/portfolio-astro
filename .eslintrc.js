@@ -13,7 +13,7 @@ module.exports = {
     },
     sourceType: 'module',
   },
-  plugins: ['prettier', 'astro', 'react', '@typescript-eslint', 'simple-import-sort', 'import'],
+  plugins: ['prettier', 'astro', 'react', 'nanoid', '@typescript-eslint', 'simple-import-sort', 'import'],
   settings: {
     'import/resolver': {
       'typescript': {
