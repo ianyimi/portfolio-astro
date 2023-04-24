@@ -1,6 +1,6 @@
 import { Vector3 } from 'three';
 
-function randomPositionVector(constraint: number | [number, number, number]) {
+function randomPositionVector(constraint: number | number[]) {
   if (typeof constraint === 'number') {
     return new Vector3(
       constraint / 2 - Math.random() * constraint,
