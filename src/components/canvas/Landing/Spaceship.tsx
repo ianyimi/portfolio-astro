@@ -50,8 +50,6 @@ export default function Spaceship(props: JSX.IntrinsicElements['group']) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene" scale={0.5} position={[0.5, 0, -2]} rotation-y={Math.PI / 2}>
-        {/* <PerspectiveCamera name="Camera" makeDefault={false} far={1000} near={0.1} fov={39.6} position={[7.28, 3.68, 8.78]} rotation={[-0.36, 0.56, 0.4]} />
-        <pointLight name="Spot" intensity={543514.13} decay={2} position={[20.07, 16.47, 35.3]} rotation={[-1.91, -0.45, -0.02]} /> */}
         <mesh name="Ship" geometry={nodes.Ship.geometry} material={materials['Material.001']} rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
           <mesh name="Circle" geometry={nodes.Circle.geometry} material={materials['Material.002']} position={[-111.63, -276.49, -20.31]} rotation={[-Math.PI / 2, 0, 0]} scale={[100, 100, 125.33]} />
           <mesh name="Circle001" geometry={nodes.Circle001.geometry} material={materials['Material.002']} position={[109.24, -276.49, -20.31]} rotation={[-Math.PI / 2, 0, 0]} scale={[100, 100, 125.33]} />
@@ -59,8 +57,6 @@ export default function Spaceship(props: JSX.IntrinsicElements['group']) {
           <mesh name="Torus004" geometry={nodes.Torus004.geometry} material={materials['Material.003']} position={[-111.63, -276.49, -20.31]} rotation={[-Math.PI / 2, 0, 0]} scale={100} />
           <mesh name="Torus007" geometry={nodes.Torus007.geometry} material={materials['Material.003']} position={[109.24, -569.82, -20.31]} rotation={[-Math.PI / 2, 0, -2.51]} scale={32.77} />
           <mesh name="Torus000" geometry={nodes.Torus000.geometry} material={materials['Material.003']} morphTargetDictionary={nodes.Torus000.morphTargetDictionary} morphTargetInfluences={nodes.Torus000.morphTargetInfluences} position={[109.24, -667.6, -20.31]} rotation={[-Math.PI / 2, 0, -1.26]} scale={5.76} />
-          {/* <pointLight name="Point003" intensity={159738.8} decay={2} color="#ff8334" position={[112.99, -381.93, -18.73]} rotation={[Math.PI, 0.04, 0.04]} scale={100} />
-          <pointLight name="Point004" intensity={159738.8} decay={2} color="#ff8334" position={[-127.22, -377.43, -28.92]} rotation={[Math.PI, 0.04, 0.04]} scale={100} /> */}
           <mesh name="Torus002" geometry={nodes.Torus002.geometry} material={materials['Material.003']} morphTargetDictionary={nodes.Torus002.morphTargetDictionary} morphTargetInfluences={nodes.Torus002.morphTargetInfluences} position={[-111.63, -472.04, -20.31]} rotation={[-Math.PI / 2, 0, -2.51]} scale={107.74} />
           <mesh name="Torus006" geometry={nodes.Torus006.geometry} material={materials['Material.003']} morphTargetDictionary={nodes.Torus006.morphTargetDictionary} morphTargetInfluences={nodes.Torus006.morphTargetInfluences} position={[109.24, -472.04, -20.31]} rotation={[-Math.PI / 2, 0, -2.51]} scale={107.74} />
           <mesh name="Torus003" geometry={nodes.Torus003.geometry} material={materials['Material.003']} morphTargetDictionary={nodes.Torus003.morphTargetDictionary} morphTargetInfluences={nodes.Torus003.morphTargetInfluences} position={[-111.63, -374.26, -20.31]} rotation={[-Math.PI / 2, 0, -1.26]} scale={124.96} />
