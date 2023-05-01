@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { Preload, AdaptiveDpr, Bvh, PerformanceMonitor } from '@react-three/drei';
 import { Suspense } from 'react';
+import { GlobalCanvas } from '@14islands/r3f-scroll-rig';
 import Landing from './Landing';
 import About from './About';
 import Contact from './Contact';
@@ -10,7 +11,7 @@ import CameraScroll from './CameraScroll';
 export default function Scene({ defaultCanvasProps }) {
   const content = document.getElementById('content');
   return (
-    <Canvas
+    <GlobalCanvas
       id="canvas"
       dpr={window.devicePixelRatio}
       {...defaultCanvasProps}
@@ -38,6 +39,6 @@ export default function Scene({ defaultCanvasProps }) {
         </Suspense>
         <PerformanceMonitor />
       </Bvh>
-    </Canvas>
+    </GlobalCanvas>
   );
 }
