@@ -19,7 +19,7 @@ type GLTFResult = GLTF & {
     cloudZero: Mesh;
     cloudOne: Mesh;
     cloudTwo: Mesh;
-    CloudThree: Mesh;
+    loudThree: Mesh;
     cloudFour: Mesh;
   };
   materials: {
@@ -27,7 +27,7 @@ type GLTFResult = GLTF & {
   };
 };
 
-const FILE_URL = 'https://dqeczc7c9n9n1.cloudfront.net/models/clouds-1681977951/clouds.glb';
+const FILE_URL = 'https://dqeczc7c9n9n1.cloudfront.net/models/clouds-1682761806/clouds-transformed.glb.gz';
 const CLOUD_TYPES = 5;
 const SCALE_CONSTRAINTS = [10, 1.75, 0.1]
 const SCALE_VARIANCE = 0.0075;
@@ -35,7 +35,7 @@ const SCALE_VARIANCE = 0.0075;
 export default function Clouds(props: JSX.IntrinsicElements['group']) {
   const range = useControls({ clouds: { value: 50, min: 10, max: 100, step: 10 } });
   const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
-  const geometryIndexMap = ['cloudOne', 'cloudTwo', 'CloudThree', 'cloudFour', 'cloudZero'];
+  const geometryIndexMap = ['cloudOne', 'cloudTwo', 'cloudThree', 'cloudFour', 'cloudZero'];
 
   // 5 Different Cloud Variations
   const cloudVariants = Array.from({ length: CLOUD_TYPES }, () => generateInstancedModelData(range.clouds / CLOUD_TYPES, SCALE_CONSTRAINTS, SCALE_VARIANCE));

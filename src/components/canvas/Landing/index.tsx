@@ -1,4 +1,4 @@
-import EnvironmentHandler from '../EnvironmentHandler';
+import EnvironmentHandler from './EnvironmentHandler';
 
 import Cube from './Cube';
 import Spaceship from './Spaceship';

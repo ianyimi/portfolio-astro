@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import AmbientParticles from './AmbientParticles';
+import AmbientParticles from '../AmbientParticles';
 import { useFrame } from '@react-three/fiber';
 
 // const FOREGROUND = {

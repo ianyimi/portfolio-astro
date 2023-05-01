@@ -65,6 +65,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^2.1.0",
+    "@headlessui/react": "^1.7.14",
     "@nanostores/react": "^0.4.1",
     "@react-three/drei": "^9.58.5",
     "@react-three/fiber": "^8.12.0",
