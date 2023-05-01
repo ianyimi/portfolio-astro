@@ -5,7 +5,7 @@ export default function Contact() {
   const { viewport } = useThree();
   return (
     <group position-y={-viewport.height}>
-      <Cctvs position={[0, -1.6, 3.5]} />
+      <Cctvs position={[0, -1.5, 3.75]} />
     </group>
   );
 }
