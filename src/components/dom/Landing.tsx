@@ -41,7 +41,7 @@ export default function Landing() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href="#anchor" onClick={() => lenis.scrollTo(item.href)} className="text-sm font-semibold leading-6 text-gray-900">
+              <a key={item.name} href={item.href} onClick={() => lenis?.scrollTo(item.href)} className="text-sm font-semibold leading-6 text-gray-900">
                 {item.name}
               </a>
             ))}
@@ -86,8 +86,8 @@ export default function Landing() {
                   {navigation.map((item) => (
                     <a
                       key={item.name}
-                      href="#anchor"
-                      onClick={() => lenis.scrollTo(item.href)}
+                      href={item.href}
+                      onClick={() => lenis?.scrollTo(item.href)}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       {item.name}
@@ -127,8 +127,9 @@ export default function Landing() {
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <a
-                  href="#"
+                  href="#contact-section"
                   className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  onClick={() => lenis?.scrollTo('#contact-section')}
                 >
                   Connect
                 </a>

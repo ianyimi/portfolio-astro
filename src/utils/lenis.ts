@@ -30,7 +30,7 @@ function initScroll() {
     scrub: 0.25,
     start: 'top top',
     end: 'bottom bottom',
-    snap: 1 / 3,
+    // snap: 1 / 3,
     // onEnter: () => console.log('enter'),
     // onLeave: () => console.log('leave'),
     markers: false,
