@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.1.4 public/staging/spaceship/spaceship.gltf --types --kee
 
 import type { Mesh, MeshStandardMaterial, Group, AnimationAction, AnimationClip } from 'three'
 import { useEffect, useRef } from 'react'
-import { useGLTF, PerspectiveCamera, useAnimations } from '@react-three/drei'
+import { useGLTF, useAnimations } from '@react-three/drei'
 import type { GLTF } from 'three-stdlib'
 
 type GLTFResult = GLTF & {

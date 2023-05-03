@@ -19,7 +19,6 @@
   "files": [
     "node_modules/gsap/types/index.d.ts",
     "node_modules/@types/three/index.d.ts",
-    // "node_modules/@react-three/drei/types/index.d.ts",
     "node_modules/@14islands/r3f-scroll-rig/dist/index.d.ts"
   ]
 }
