@@ -1,5 +1,5 @@
 ---
-import { isMobile } from 'react-device-detect';
+import { useUserAgent } from 'astro-useragent';
 import Canvas from '~/components/canvas';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 import MetaTags from '~/components/common/MetaTags.astro';
@@ -14,6 +14,8 @@ export interface Props {
 
 const { meta = {} } = Astro.props;
 const { language = 'en', textDirection = 'ltr' } = SITE;
+const uaString = Astro.request.headers.get('user-agent');
+const { isMobile } = useUserAgent(uaString);
 
 const defaultCanvasProps = {
   gl: {

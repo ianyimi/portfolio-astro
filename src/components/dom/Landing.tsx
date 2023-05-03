@@ -2,6 +2,8 @@ import { useDarkMode } from 'usehooks-ts';
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { ScrollState } from '~/store/scroll';
+import { useStore } from '@nanostores/react';
 
 const navigation = [
   { name: 'About', href: '#about-section' },
@@ -11,6 +13,7 @@ const navigation = [
 
 export default function Landing() {
   const { isDarkMode } = useDarkMode();
+  const { lenis } = useStore(ScrollState)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   return (
     <div id="landing-section" className="min-h-screen min-w-screen">
@@ -38,7 +41,7 @@ export default function Landing() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+              <a key={item.name} href="#anchor" onClick={() => lenis.scrollTo(item.href)} className="text-sm font-semibold leading-6 text-gray-900">
                 {item.name}
               </a>
             ))}
@@ -83,7 +86,8 @@ export default function Landing() {
                   {navigation.map((item) => (
                     <a
                       key={item.name}
-                      href={item.href}
+                      href="#anchor"
+                      onClick={() => lenis.scrollTo(item.href)}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       {item.name}
@@ -91,19 +95,21 @@ export default function Landing() {
                   ))}
                 </div>
                 <div className="py-6">
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Log in
-                  </a>
+                  <input
+                    id="theme-toggle"
+                    type="checkbox"
+                    data-toggle-theme="spaceCadetRed,floralWhiteFlame"
+                    className="toggle"
+                    data-act-class="ACTIVECLASS"
+                    defaultChecked={isDarkMode}
+                  />
                 </div>
               </div>
             </div>
           </Dialog.Panel>
         </Dialog>
       </header>
-      <div className="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14">
+      <div className="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20">
         <div
           className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right sm:-mr-80 lg:-mr-96"
           aria-hidden="true"

@@ -16,8 +16,8 @@ const meta = {
 
 <Layout {meta}>
   <div>
-    <ThemeHandler client:load />
-    <Landing client:load />
+    <ThemeHandler client:only="react" />
+    <Landing client:only="react" />
     <About client:only="react" />
     <Work />
     <Contact />

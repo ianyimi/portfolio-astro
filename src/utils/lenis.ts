@@ -21,6 +21,7 @@ function initScroll() {
     touchMultiplier: 2,
     infinite: false,
   });
+  ScrollState.setKey('lenis', lenis);
 
   ScrollTrigger.create({
     animation: ScrollTimeline.get().timeline,

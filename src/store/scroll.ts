@@ -1,11 +1,12 @@
 import { map } from 'nanostores';
+import type Lenis from '@studio-freight/lenis';
 
 export interface ScrollStore {
   top: number;
   progress: number;
+  lenis?: Lenis
 }
 
-gsap.registerPlugin(ScrollTrigger);
 export const timeline = gsap.timeline();
 
 export const ScrollTimeline = map<{ timeline: gsap.core.Timeline }>({
@@ -15,4 +16,5 @@ export const ScrollTimeline = map<{ timeline: gsap.core.Timeline }>({
 export const ScrollState = map<ScrollStore>({
   top: 0,
   progress: 0,
+  lenis: undefined,
 });
