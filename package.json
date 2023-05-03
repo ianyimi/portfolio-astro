@@ -67,6 +67,7 @@
     "@14islands/r3f-scroll-rig": "^8.10.0",
     "@astrojs/node": "^5.1.2",
     "@astrojs/react": "^2.1.0",
+    "@astrojs/vercel": "^3.3.0",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
     "@nanostores/react": "^0.4.1",
